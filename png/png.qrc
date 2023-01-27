@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="leds">
+    <file>led-red-on.png</file>
+    <file>green-led-on.png</file>
+    <file>blue-led-on.png</file>
+  </qresource>
+  <qresource prefix="connection">
+    <file>online.png</file>
+    <file>offline.png</file>
+  </qresource>
+</RCC>
