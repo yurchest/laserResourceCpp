@@ -27,7 +27,8 @@ target_link_libraries(Laser PRIVATE
     Qt6::Core
     Qt6::Gui
     Qt6::Widgets
-   ${CMAKE_SOURCE_DIR}/lib/chai.dll
+   ${CMAKE_SOURCE_DIR}/lib/win/chai.dll
+   ${CMAKE_SOURCE_DIR}/lib/win/ftd2xx.lib
     )
 
 
@@ -50,18 +51,18 @@ IF (WIN32)
 
     get_filename_component(GCC_PATH ${CMAKE_CXX_COMPILER} PATH)
 
-    add_custom_command(TARGET Laser POST_BUILD
+    # add_custom_command(TARGET Laser POST_BUILD
 
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libgcc_s_seh-1.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libstdc++-6.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libwinpthread-1.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/chai.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/ftd2xx.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libgcc_s_seh-1.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libstdc++-6.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libwinpthread-1.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/chai.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/ftd2xx.dll "${CMAKE_SOURCE_DIR}/LaserProgram/"
 
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libgcc_s_seh-1.dll "${CMAKE_CURRENT_BINARY_DIR}/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libstdc++-6.dll "${CMAKE_CURRENT_BINARY_DIR}/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libwinpthread-1.dll "${CMAKE_CURRENT_BINARY_DIR}/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/chai.dll "${CMAKE_CURRENT_BINARY_DIR}/"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/ftd2xx.dll "${CMAKE_CURRENT_BINARY_DIR}/"
-    )
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libgcc_s_seh-1.dll "${CMAKE_CURRENT_BINARY_DIR}/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libstdc++-6.dll "${CMAKE_CURRENT_BINARY_DIR}/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${GCC_PATH}/libwinpthread-1.dll "${CMAKE_CURRENT_BINARY_DIR}/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/chai.dll "${CMAKE_CURRENT_BINARY_DIR}/"
+    #     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/lib/ftd2xx.dll "${CMAKE_CURRENT_BINARY_DIR}/"
+    # )
 ENDIF()
