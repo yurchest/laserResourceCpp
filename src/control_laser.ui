@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Ubuntu Mono</family>
+    <family>Calibri</family>
     <pointsize>14</pointsize>
    </font>
   </property>
@@ -45,7 +45,27 @@ QPushButton:pressed {
         cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
         radius: 1.35, stop: 0 #fff, stop: 1 #ddd
         );
-    }</string>
+    }
+
+QSpinBox {
+     padding-right: 15px; 
+     border-width: 3;
+	border: 1px solid;
+	border-radius:5px;
+ }
+
+QDoubleSpinBox {
+     padding-right: 15px; 
+     border-width: 3;
+	border: 1px solid;
+	border-radius:5px;
+ }
+QLineEdit {
+	border: 1px solid grey;
+	border-radius: 6px;
+}
+
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="font">
@@ -65,15 +85,17 @@ QPushButton:pressed {
     </property>
     <property name="font">
      <font>
-      <family>Ubuntu</family>
-      <pointsize>12</pointsize>
+      <family>Georgia</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -87,6 +109,13 @@ QPushButton:pressed {
         <width>651</width>
         <height>201</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame {
@@ -109,6 +138,13 @@ QPushButton:pressed {
          <height>173</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -116,8 +152,9 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_50">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
               <italic>false</italic>
               <bold>false</bold>
               <underline>false</underline>
@@ -143,8 +180,10 @@ QPushButton:pressed {
               </property>
               <property name="font">
                <font>
-                <family>Ubuntu</family>
+                <family>Georgia</family>
                 <pointsize>14</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
                </font>
               </property>
               <property name="text">
@@ -165,8 +204,10 @@ QPushButton:pressed {
               </property>
               <property name="font">
                <font>
-                <family>Ubuntu</family>
+                <family>Georgia</family>
                 <pointsize>14</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
                </font>
               </property>
               <property name="toolTipDuration">
@@ -205,8 +246,10 @@ QPushButton:pressed {
               </property>
               <property name="font">
                <font>
-                <family>Ubuntu</family>
+                <family>Georgia</family>
                 <pointsize>14</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
                </font>
               </property>
               <property name="styleSheet">
@@ -226,6 +269,13 @@ QPushButton:pressed {
         </item>
         <item>
          <spacer name="horizontalSpacer_6">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -243,8 +293,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_10">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -268,6 +320,13 @@ QPushButton:pressed {
               <width>41</width>
               <height>41</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -294,6 +353,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -319,6 +385,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -334,6 +407,13 @@ QPushButton:pressed {
         </item>
         <item>
          <spacer name="horizontalSpacer">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -351,8 +431,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_14">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -376,6 +458,13 @@ QPushButton:pressed {
               <width>41</width>
               <height>41</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -402,6 +491,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -427,6 +523,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -442,6 +545,13 @@ QPushButton:pressed {
         </item>
         <item>
          <spacer name="horizontalSpacer_2">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -459,8 +569,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_42">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
@@ -488,6 +600,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -512,6 +631,13 @@ QPushButton:pressed {
               <width>41</width>
               <height>41</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -538,6 +664,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -550,6 +683,13 @@ QPushButton:pressed {
         </item>
         <item>
          <spacer name="horizontalSpacer_3">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -567,8 +707,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_28">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -592,6 +734,13 @@ QPushButton:pressed {
               <width>41</width>
               <height>41</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -618,6 +767,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -643,6 +799,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -655,6 +818,13 @@ QPushButton:pressed {
         </item>
         <item>
          <spacer name="horizontalSpacer_4">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -672,8 +842,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_35">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -697,6 +869,13 @@ QPushButton:pressed {
               <width>41</width>
               <height>41</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -723,6 +902,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -748,6 +934,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -760,6 +953,13 @@ QPushButton:pressed {
         </item>
         <item>
          <spacer name="horizontalSpacer_5">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -777,8 +977,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_43">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -802,6 +1004,13 @@ QPushButton:pressed {
               <width>41</width>
               <height>41</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -828,6 +1037,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -853,6 +1069,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -875,6 +1098,13 @@ QPushButton:pressed {
         <height>141</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame_2 {
 	border: 2px solid;
@@ -893,16 +1123,25 @@ QPushButton:pressed {
          <x>20</x>
          <y>10</y>
          <width>181</width>
-         <height>121</height>
+         <height>126</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
          <widget class="QLabel" name="label_9">
           <property name="font">
            <font>
-            <family>DejaVu Sans</family>
+            <family>Georgia</family>
             <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -929,6 +1168,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -954,6 +1200,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -969,8 +1222,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_7">
             <property name="font">
              <font>
-              <family>DejaVu Sans</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -982,8 +1237,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_8">
             <property name="font">
              <font>
-              <family>DejaVu Sans</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -1005,6 +1262,13 @@ QPushButton:pressed {
         <height>141</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame_3 {
 	border: 2px solid;
@@ -1023,16 +1287,25 @@ QPushButton:pressed {
          <x>20</x>
          <y>10</y>
          <width>181</width>
-         <height>121</height>
+         <height>126</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
          <widget class="QLabel" name="label_17">
           <property name="font">
            <font>
-            <family>DejaVu Sans</family>
+            <family>Georgia</family>
             <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -1059,6 +1332,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -1084,6 +1364,13 @@ QPushButton:pressed {
               <height>41</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -1099,8 +1386,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_19">
             <property name="font">
              <font>
-              <family>DejaVu Sans</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -1112,8 +1401,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_20">
             <property name="font">
              <font>
-              <family>DejaVu Sans</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -1135,6 +1426,13 @@ QPushButton:pressed {
         <height>101</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QPushButton" name="pushButton">
@@ -1146,9 +1444,10 @@ QPushButton:pressed {
          </property>
          <property name="font">
           <font>
-           <family>Times New Roman</family>
+           <family>Georgia</family>
            <pointsize>11</pointsize>
-           <bold>true</bold>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -1167,6 +1466,13 @@ QPushButton:pressed {
        </item>
        <item>
         <spacer name="horizontalSpacer_7">
+         <property name="font">
+          <font>
+           <family>Georgia</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -1188,8 +1494,10 @@ QPushButton:pressed {
          </property>
          <property name="font">
           <font>
-           <family>Times New Roman</family>
-           <bold>true</bold>
+           <family>Georgia</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -1208,6 +1516,13 @@ QPushButton:pressed {
        </item>
        <item>
         <spacer name="horizontalSpacer_8">
+         <property name="font">
+          <font>
+           <family>Georgia</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -1229,9 +1544,10 @@ QPushButton:pressed {
          </property>
          <property name="font">
           <font>
-           <family>Times New Roman</family>
+           <family>Georgia</family>
            <pointsize>12</pointsize>
-           <bold>true</bold>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -1259,6 +1575,13 @@ QPushButton:pressed {
         <height>121</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame_7 {
 	border: 2px solid;
@@ -1280,6 +1603,13 @@ QPushButton:pressed {
          <height>101</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout_12">
         <item>
          <widget class="QLabel" name="label_68">
@@ -1291,8 +1621,10 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <family>Ubuntu</family>
+            <family>Georgia</family>
             <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -1313,8 +1645,10 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <family>Ubuntu</family>
+            <family>Georgia</family>
             <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -1349,9 +1683,10 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Times New Roman</family>
+        <family>Georgia</family>
         <pointsize>12</pointsize>
-        <bold>true</bold>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1403,9 +1738,17 @@ QPushButton:pressed {
        <rect>
         <x>50</x>
         <y>220</y>
-        <width>301</width>
-        <height>161</height>
+        <width>341</width>
+        <height>171</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame_4 {
@@ -1424,35 +1767,263 @@ QPushButton:pressed {
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>280</width>
-         <height>131</height>
+         <width>318</width>
+         <height>142</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
         <item>
-         <widget class="QLabel" name="label_34">
-          <property name="font">
-           <font>
-            <family>DejaVu Sans</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Энергия</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_34">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">padding: 3px;
+border: 1px solid;
+border-radius: 5px;
+</string>
+            </property>
+            <property name="text">
+             <string>Энергия</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
+          <item row="2" column="5">
+           <widget class="QLabel" name="label_40">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>мВт</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QDoubleSpinBox" name="doubleSpinBox">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Times New Roman</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="maximum">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Times New Roman</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="maximum">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Times New Roman</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="maximum">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="4">
+           <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Times New Roman</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="maximum">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QLabel" name="label_38">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>мВт</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>1064 нм</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QLabel" name="label_33">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Макс</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="3">
            <widget class="QLabel" name="label_26">
             <property name="font">
              <font>
-              <family>DejaVu Sans</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -1467,8 +2038,10 @@ QPushButton:pressed {
            <widget class="QLabel" name="label_27">
             <property name="font">
              <font>
-              <family>DejaVu Sans</family>
+              <family>Georgia</family>
               <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -1481,6 +2054,14 @@ QPushButton:pressed {
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_24">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>532 нм</string>
             </property>
@@ -1491,6 +2072,14 @@ QPushButton:pressed {
           </item>
           <item row="0" column="2">
            <widget class="QLabel" name="label_31">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Мин</string>
             </property>
@@ -1499,21 +2088,16 @@ QPushButton:pressed {
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <spacer name="horizontalSpacer_10">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="1" column="1">
            <spacer name="horizontalSpacer_9">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -1525,85 +2109,26 @@ QPushButton:pressed {
             </property>
            </spacer>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_21">
-            <property name="text">
-             <string>1064 нм</string>
+          <item row="2" column="1">
+           <spacer name="horizontalSpacer_10">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
-          </item>
-          <item row="0" column="4">
-           <widget class="QLabel" name="label_33">
-            <property name="text">
-             <string>Макс</string>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="5">
-           <widget class="QLabel" name="label_38">
-            <property name="text">
-             <string>мВт</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="5">
-           <widget class="QLabel" name="label_40">
-            <property name="text">
-             <string>мВт</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QDoubleSpinBox" name="doubleSpinBox">
-            <property name="maximum">
-             <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.100000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="4">
-           <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
-            <property name="maximum">
-             <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.100000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
-            <property name="maximum">
-             <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.100000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="4">
-           <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-            <property name="maximum">
-             <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.100000000000000</double>
-            </property>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -1615,9 +2140,17 @@ QPushButton:pressed {
        <rect>
         <x>60</x>
         <y>40</y>
-        <width>271</width>
+        <width>321</width>
         <height>151</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame_5 {
@@ -1636,13 +2169,29 @@ QPushButton:pressed {
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>251</width>
+         <width>321</width>
          <height>131</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Время накачки 1:</string>
           </property>
@@ -1650,6 +2199,14 @@ QPushButton:pressed {
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Время накачки 2:</string>
           </property>
@@ -1657,8 +2214,25 @@ QPushButton:pressed {
         </item>
         <item row="0" column="1">
          <widget class="QSpinBox" name="spinBox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1670,6 +2244,20 @@ QPushButton:pressed {
         </item>
         <item row="1" column="1">
          <widget class="QSpinBox" name="spinBox_2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -1683,21 +2271,49 @@ QPushButton:pressed {
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="label_5">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>мкс</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
          <widget class="QSpinBox" name="spinBox_3">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
           </property>
           <property name="maximum">
            <number>500</number>
@@ -1706,26 +2322,50 @@ QPushButton:pressed {
         </item>
         <item row="0" column="2">
          <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Гц</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item row="2" column="2">
          <widget class="QLabel" name="label_6">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>мкс</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Частота:</string>
           </property>
@@ -1738,7 +2378,7 @@ QPushButton:pressed {
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>400</y>
+        <y>420</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -1751,9 +2391,10 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Times New Roman</family>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
+        <family>Georgia</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1772,7 +2413,7 @@ QPushButton:pressed {
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>410</x>
         <y>50</y>
         <width>141</width>
         <height>41</height>
@@ -1786,9 +2427,10 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Times New Roman</family>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
+        <family>Georgia</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1811,6 +2453,12 @@ QPushButton:pressed {
      </attribute>
     </widget>
     <widget class="QWidget" name="tab_3">
+     <property name="font">
+      <font>
+       <family>Georgia</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
      <attribute name="title">
       <string>Энергия</string>
      </attribute>
@@ -1825,7 +2473,7 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>DejaVu Sans</family>
+        <family>Georgia</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -1841,6 +2489,12 @@ QPushButton:pressed {
         <width>361</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Georgia</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame_6 {
@@ -1863,9 +2517,21 @@ QPushButton:pressed {
          <height>91</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
        <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
          <widget class="QLabel" name="label_64">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Накачка 1</string>
           </property>
@@ -1876,6 +2542,12 @@ QPushButton:pressed {
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
@@ -1883,6 +2555,12 @@ QPushButton:pressed {
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_65">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Накачка 2</string>
           </property>
@@ -1890,6 +2568,12 @@ QPushButton:pressed {
         </item>
         <item row="1" column="3">
          <widget class="QLabel" name="label_67">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>532 нм</string>
           </property>
@@ -1899,6 +2583,12 @@ QPushButton:pressed {
          <widget class="QLineEdit" name="lineEdit_2">
           <property name="enabled">
            <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
           </property>
           <property name="text">
            <string/>
@@ -1910,6 +2600,12 @@ QPushButton:pressed {
         </item>
         <item row="0" column="3">
          <widget class="QLabel" name="label_66">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>1064 нм</string>
           </property>
@@ -1919,6 +2615,21 @@ QPushButton:pressed {
          <widget class="QLineEdit" name="lineEdit">
           <property name="enabled">
            <bool>true</bool>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -1930,6 +2641,12 @@ QPushButton:pressed {
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
@@ -1937,6 +2654,12 @@ QPushButton:pressed {
         </item>
         <item row="0" column="2">
          <spacer name="horizontalSpacer_13">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1950,6 +2673,12 @@ QPushButton:pressed {
         </item>
         <item row="1" column="2">
          <spacer name="horizontalSpacer_14">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
