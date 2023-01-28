@@ -4,6 +4,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtCore/QTimer>
 #include "../lib/chai.h"
+#include "bits.h"
 
 #define RED_LED QPixmap(":/leds/led-red-on.png")
 #define GREEN_LED QPixmap(":/leds/green-led-on.png")
@@ -12,13 +13,11 @@
 #define RED_CROSS QPixmap(":/tick_cross/red_cross.png")
 
 
-#define ID_STATUS           0x01    // Статусный паке
-#define ID_LASER_ON         0x02    // Пакет-команда ВКЛ
-#define ID_LASER_OFF        0x03    // Пакет-команда ВЫКЛ
-#define ID_LASER_SYNC       0x04    // Пакет-команда ВНУТР/ВНЕШН
-#define ID_SETTINGS_FREQ_T  0x05    // Пакет данных (Частота, время накачек)
-#define ID_SETTINGS_ENERGY  0x06    // Пакет данных (мин/макс энергия 1064/532)
-#define ID_ENERGY_DIAD      0x07    // Пакет данных (измерения фотодиодов)
+#define ID_COMMAND          0x01    // Пакет команды
+#define ID_STATUS           0x02    // Статусный пакет
+#define ID_SETTINGS_FREQ_T  0x03    // Пакет данных (Частота, время накачек)
+#define ID_SETTINGS_ENERGY  0x04    // Пакет данных (мин/макс энергия 1064/532)
+#define ID_ENERGY_DIAD      0x05    // Пакет данных (измерения фотодиодов)
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -55,9 +54,8 @@ private:
 
     uint8_t tx_data_freg_t[8]; // частота, время накачки 1,2
     uint8_t tx_data_energy[8]; // мин, макс энергия 1064, 532
-    canmsg_t tx_laser_on;
-    canmsg_t tx_laser_off;
-    canmsg_t tx_laser_sync;
+    uint8_t tx_laser_on_off[8];
+    uint8_t tx_laser_sync[8];
 
     typedef enum on_off
     {
@@ -102,8 +100,7 @@ private:
     void check_settings(const _u8* , _u32 );
 
 private slots:
-    void send_laser_on();
-    void send_laser_off();
+    void send_laser_on_off();
     void send_change_sync();
     void connect_adapter();
     void receive_msg();

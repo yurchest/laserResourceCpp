@@ -125,7 +125,7 @@ QLineEdit {
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -1465,36 +1465,6 @@ QLineEdit {
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="minimumSize">
-          <size>
-           <width>80</width>
-           <height>80</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Georgia</family>
-           <pointsize>11</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>ВКЛ</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
         <spacer name="horizontalSpacer_7">
          <property name="font">
           <font>
@@ -1515,7 +1485,7 @@ QLineEdit {
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pushButton">
          <property name="minimumSize">
           <size>
            <width>80</width>
@@ -1525,7 +1495,7 @@ QLineEdit {
          <property name="font">
           <font>
            <family>Georgia</family>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
            <weight>50</weight>
            <bold>false</bold>
           </font>
@@ -1534,7 +1504,7 @@ QLineEdit {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>ВЫКЛ</string>
+          <string>ВКЛ/ВЫКЛ</string>
          </property>
          <property name="iconSize">
           <size>

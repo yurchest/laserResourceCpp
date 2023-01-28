@@ -1,6 +1,10 @@
 #ifndef BITS_H
 #define BITS_H
 
+// COMMAND BYTES
+#define LASER_ON_OFF        (1<<1)
+#define LASER_SYNC          (1<<2)
+
 // 0 Byte
 #define BIT_MN1_ERROR       (1<<7)
 #define BIT_MN1_READY       (1<<6)

@@ -1,6 +1,5 @@
 #include "control_laser.h"
 #include "ui_control_laser.h"
-#include "bits.h"
 #include <iostream>
 
 void control_laser::update_leds(const _u8 *rx_data_status) {

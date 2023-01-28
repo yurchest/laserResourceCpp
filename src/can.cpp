@@ -35,6 +35,7 @@ void control_laser::receive_msg() {
                 case ID_SETTINGS_FREQ_T:
                     if (is_update_freq_t) {
                         update_freq_t(rx_frame.data);
+                        check_settings(rx_frame.data, ID_SETTINGS_FREQ_T);
                         is_update_freq_t = false;
                     }
                     break;
@@ -42,6 +43,7 @@ void control_laser::receive_msg() {
                 case ID_SETTINGS_ENERGY:
                     if (is_update_energy) {
                         update_energy(rx_frame.data);
+                        check_settings(rx_frame.data, ID_SETTINGS_ENERGY);
                         is_update_energy = false;
                     }
                     break;
@@ -126,24 +128,25 @@ void control_laser::send_settings_data() {
     }
 }
 
-void control_laser::send_laser_on() {
-    // TODO Убрать повторяемость
+void control_laser::send_laser_on_off() {
     if (can_state)    // если адаптер подключен
     {
-        CiPerror(CiTransmit(0, &tx_laser_on), "CiTransmit LASER ON");
+        canmsg_t tx;
+        tx.id = ID_COMMAND;
+        tx.len = 1;
+        std::memcpy(tx.data, tx_laser_on_off, 8);
+        CiPerror(CiTransmit(0, &tx), "CiTransmit LASER ON");
     }
 }
 
-void control_laser::send_laser_off() {
-    if (can_state)    // если адаптер подключен
-    {
-        CiPerror(CiTransmit(0, &tx_laser_off), "CiTransmit LASER OFF");
-    }
-}
 
 void control_laser::send_change_sync() {
     if (can_state)    // если адаптер подключен
     {
-        CiPerror(CiTransmit(0, &tx_laser_sync), "CiTransmit LASER SYNC");
+        canmsg_t tx;
+        tx.id = ID_COMMAND;
+        tx.len = 1;
+        std::memcpy(tx.data, tx_laser_sync, 8);
+        CiPerror(CiTransmit(0, &tx), "CiTransmit LASER SYNC");
     }
 }

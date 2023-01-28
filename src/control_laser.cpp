@@ -14,8 +14,7 @@ control_laser::control_laser(QMainWindow *parent)
     connect(timer_rx_data, SIGNAL(timeout()), this, SLOT(receive_msg()));
     connect(ui->pushButton_6, SIGNAL(clicked(bool)), this, SLOT(connect_adapter()));
     connect(ui->pushButton_4, SIGNAL(clicked(bool)), this, SLOT(apply_settings()));
-    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(send_laser_on()));
-    connect(ui->pushButton_2, SIGNAL(clicked(bool)), this, SLOT(send_laser_off()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(send_laser_on_off()));
     connect(ui->pushButton_3, SIGNAL(clicked(bool)), this, SLOT(send_change_sync()));
     connect(ui->pushButton_5, &QPushButton::clicked, this, [this]
             {
@@ -33,22 +32,14 @@ control_laser::~control_laser()
 void control_laser::can_arrays_init(void)
 {
     can_state = OFF; // статус адаптера - откл.
-    is_update_freq_t = false;
-    is_update_energy = false;
+    is_update_freq_t = true;
+    is_update_energy = true;
 
     uint8_t init_array[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
-    tx_laser_on.id = ID_LASER_ON;
-    tx_laser_off.id = ID_LASER_OFF;
-    tx_laser_sync.id = ID_LASER_SYNC;
+    tx_laser_on_off[0] = LASER_ON_OFF;
+    tx_laser_sync[0] = LASER_SYNC;
 
-    tx_laser_on.len = 8;
-    tx_laser_off.len = 8;
-    tx_laser_sync.len = 8;
-
-    memcpy(tx_laser_on.data, init_array, 8);
-    memcpy(tx_laser_off.data, init_array, 8);
-    memcpy(tx_laser_sync.data, init_array, 8);
 }
 
 void control_laser::timers_init()
