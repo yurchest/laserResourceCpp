@@ -37,8 +37,6 @@ void control_laser::can_arrays_init(void)
     is_update_energy = false;
 
     uint8_t init_array[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-    memcpy(rx_data_status, init_array, 8);
-    memcpy(rx_data_settings_freq_t, init_array, 8);
 
     tx_laser_on.id = ID_LASER_ON;
     tx_laser_off.id = ID_LASER_OFF;

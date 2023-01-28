@@ -1,5 +1,4 @@
 #include "control_laser.h"
-
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
