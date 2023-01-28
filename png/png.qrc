@@ -4,6 +4,10 @@
     <file>green-led-on.png</file>
     <file>blue-led-on.png</file>
   </qresource>
+  <qresource prefix="tick_cross">
+    <file>green_tick.png</file>
+    <file>red_cross.png</file>
+  </qresource>
   <qresource prefix="connection">
     <file>online.png</file>
     <file>offline.png</file>

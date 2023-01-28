@@ -28,7 +28,7 @@ set(LIBS
         Qt6::Widgets)
 
 IF (WIN32)
-    target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/chai.dll)
+    target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/win/chai.dll)
 ELSE ()
     target_link_libraries(Laser PRIVATE ${LIBS}  ${CMAKE_SOURCE_DIR}/lib/unix/chai.a ${CMAKE_SOURCE_DIR}/lib/unix/ftd2xx.a)
 ENDIF ()

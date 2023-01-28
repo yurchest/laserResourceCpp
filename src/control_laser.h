@@ -8,6 +8,9 @@
 #define RED_LED QPixmap(":/leds/led-red-on.png")
 #define GREEN_LED QPixmap(":/leds/green-led-on.png")
 #define BLUE_LED QPixmap(":/leds/blue-led-on.png")
+#define GREEN_TICK QPixmap(":/tick_cross/green_tick.png")
+#define RED_CROSS QPixmap(":/tick_cross/red_cross.png")
+
 
 #define ID_STATUS           0x01    // Статусный паке
 #define ID_LASER_ON         0x02    // Пакет-команда ВКЛ
@@ -91,10 +94,12 @@ private:
     void read_t2();
     void read_energy();
 
-    void update_leds(const _u8 *);
+    void update_leds(const _u8*);
     void update_freq_t(const _u8*);
-    void update_energy(const _u8 *);
-    void update_energy_diag(const _u8 *);
+    void update_energy(const _u8*);
+    void update_energy_diag(const _u8*);
+
+    void check_settings(const _u8* , _u32 );
 
 private slots:
     void send_laser_on();

@@ -15,6 +15,8 @@ void control_laser::receive_msg() {
     update_energy_diag(test_frame.data);
     update_energy(test_frame.data);
     update_leds(test_frame.data);
+    check_settings(test_frame.data, ID_SETTINGS_FREQ_T);
+    check_settings(test_frame.data, ID_SETTINGS_ENERGY);
     if (is_update_freq_t) {
         update_freq_t(test_frame.data);
         is_update_freq_t = false;

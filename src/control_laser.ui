@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>963</width>
+    <width>960</width>
     <height>530</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>960</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>960</width>
+    <height>530</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -68,6 +80,12 @@ QLineEdit {
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>960</width>
+     <height>510</height>
+    </size>
+   </property>
    <property name="font">
     <font>
      <family>DejaVu Sans</family>
@@ -83,6 +101,18 @@ QLineEdit {
       <height>510</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>960</width>
+      <height>510</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>960</width>
+      <height>510</height>
+     </size>
+    </property>
     <property name="font">
      <font>
       <family>Georgia</family>
@@ -95,7 +125,7 @@ QLineEdit {
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -1736,9 +1766,9 @@ QPushButton:pressed {
      <widget class="QFrame" name="frame_4">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>60</x>
         <y>220</y>
-        <width>341</width>
+        <width>361</width>
         <height>171</height>
        </rect>
       </property>
@@ -1767,7 +1797,7 @@ QPushButton:pressed {
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>318</width>
+         <width>345</width>
          <height>142</height>
         </rect>
        </property>
@@ -1836,6 +1866,33 @@ border-radius: 5px;
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
+          <item row="1" column="2">
+           <widget class="QDoubleSpinBox" name="doubleSpinBox">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Times New Roman</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="maximum">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
           <item row="2" column="5">
            <widget class="QLabel" name="label_40">
             <property name="font">
@@ -1854,8 +1911,8 @@ border-radius: 5px;
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
-           <widget class="QDoubleSpinBox" name="doubleSpinBox">
+          <item row="2" column="2">
+           <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
             <property name="minimumSize">
              <size>
               <width>80</width>
@@ -1908,33 +1965,6 @@ border-radius: 5px;
             </property>
            </widget>
           </item>
-          <item row="2" column="2">
-           <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
-            <property name="minimumSize">
-             <size>
-              <width>80</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Times New Roman</family>
-              <pointsize>14</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="maximum">
-             <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.100000000000000</double>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="4">
            <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
             <property name="minimumSize">
@@ -1962,24 +1992,6 @@ border-radius: 5px;
             </property>
            </widget>
           </item>
-          <item row="1" column="5">
-           <widget class="QLabel" name="label_38">
-            <property name="font">
-             <font>
-              <family>Georgia</family>
-              <pointsize>14</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>мВт</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_21">
             <property name="font">
@@ -1992,6 +2004,24 @@ border-radius: 5px;
             </property>
             <property name="text">
              <string>1064 нм</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QLabel" name="label_38">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>мВт</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -2034,24 +2064,6 @@ border-radius: 5px;
             </property>
            </widget>
           </item>
-          <item row="2" column="3">
-           <widget class="QLabel" name="label_27">
-            <property name="font">
-             <font>
-              <family>Georgia</family>
-              <pointsize>14</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>-</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_24">
             <property name="font">
@@ -2070,8 +2082,8 @@ border-radius: 5px;
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="label_31">
+          <item row="2" column="3">
+           <widget class="QLabel" name="label_27">
             <property name="font">
              <font>
               <family>Georgia</family>
@@ -2081,33 +2093,12 @@ border-radius: 5px;
              </font>
             </property>
             <property name="text">
-             <string>Мин</string>
+             <string>-</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
-          </item>
-          <item row="1" column="1">
-           <spacer name="horizontalSpacer_9">
-            <property name="font">
-             <font>
-              <family>Georgia</family>
-              <pointsize>14</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
           </item>
           <item row="2" column="1">
            <spacer name="horizontalSpacer_10">
@@ -2130,6 +2121,95 @@ border-radius: 5px;
             </property>
            </spacer>
           </item>
+          <item row="1" column="1">
+           <spacer name="horizontalSpacer_9">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_31">
+            <property name="font">
+             <font>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Мин</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="6">
+           <widget class="QLabel" name="label_15">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../png/png.qrc">:/tick_cross/red_cross.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="6">
+           <widget class="QLabel" name="label_16">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../png/png.qrc">:/tick_cross/red_cross.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -2140,7 +2220,7 @@ border-radius: 5px;
        <rect>
         <x>60</x>
         <y>40</y>
-        <width>321</width>
+        <width>361</width>
         <height>151</height>
        </rect>
       </property>
@@ -2169,7 +2249,7 @@ border-radius: 5px;
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>321</width>
+         <width>334</width>
          <height>131</height>
         </rect>
        </property>
@@ -2320,24 +2400,6 @@ border-radius: 5px;
           </property>
          </widget>
         </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <family>Georgia</family>
-            <pointsize>14</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Гц</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
         <item row="2" column="2">
          <widget class="QLabel" name="label_6">
           <property name="font">
@@ -2356,6 +2418,24 @@ border-radius: 5px;
           </property>
          </widget>
         </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Гц</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="font">
@@ -2368,6 +2448,81 @@ border-radius: 5px;
           </property>
           <property name="text">
            <string>Частота:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_11">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../png/png.qrc">:/tick_cross/red_cross.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLabel" name="label_12">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../png/png.qrc">:/tick_cross/red_cross.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QLabel" name="label_13">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../png/png.qrc">:/tick_cross/red_cross.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2413,7 +2568,7 @@ border-radius: 5px;
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>440</x>
         <y>50</y>
         <width>141</width>
         <height>41</height>
