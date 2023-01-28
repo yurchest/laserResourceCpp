@@ -5,16 +5,18 @@
 void control_laser::receive_msg() {
 
     // TEST
+    canmsg_t test_frame;
+    
     uint8_t array2[8] = {1, 245, 0, 201, 0, 202, 7, 8};
-    std::memcpy(rx_data_settings_freq_t, array2, 8);
-    std::memcpy(rx_data_energy_diag, array2, 8);
-    std::memcpy(rx_data_energy, array2, 8);
-    std::memcpy(rx_data_status, array2, 8);
-    update_energy_diag();
-    update_energy();
-    update_leds();
+    
+    std::memcpy(test_frame.data, array2, 8);
+    std::memcpy(test_frame.data, array2, 8);
+    std::memcpy(test_frame.data, array2, 8);
+    update_energy_diag(test_frame.data);
+    update_energy(test_frame.data);
+    update_leds(test_frame.data);
     if (is_update_freq_t) {
-        update_freq_t();
+        update_freq_t(test_frame.data);
         is_update_freq_t = false;
     }
     //
@@ -25,29 +27,25 @@ void control_laser::receive_msg() {
         for (canmsg_t rx_frame: rx_buffer) {
             switch (rx_frame.id) {
                 case ID_STATUS:
-                    std::memcpy(rx_data_status, rx_frame.data, 8);
-                    update_leds();
+                    update_leds(rx_frame.data);
                     break;
 
                 case ID_SETTINGS_FREQ_T:
-                    std::memcpy(rx_data_settings_freq_t, rx_frame.data, 8);
                     if (is_update_freq_t) {
-                        update_freq_t();
+                        update_freq_t(rx_frame.data);
                         is_update_freq_t = false;
                     }
                     break;
 
                 case ID_SETTINGS_ENERGY:
-                    std::memcpy(rx_data_energy, rx_frame.data, 8);
                     if (is_update_energy) {
-                        update_energy();
+                        update_energy(rx_frame.data);
                         is_update_energy = false;
                     }
                     break;
 
                 case ID_ENERGY_DIAD:
-                    std::memcpy(rx_data_energy_diag, rx_frame.data, 8);
-                    update_energy_diag();
+                    update_energy_diag(rx_frame.data);
                     break;
 
                 default:
@@ -87,15 +85,15 @@ void control_laser::connect_adapter() {
     if (board_info() > 0) {
         if (can_state == OFF) {
             CiPerror(CiOpen(0, CIO_CAN11), "CiOpen");             // открываем канал 0
-            CiPerror(CiSetBaud(0, BCI_250K), "CiSetBaud");             // конфигурируем канал (устанавливаем скорость)
-            CiPerror(CiRcQueResize(0, 3), "CiRcQueResize");       // конфигурируем канал (размер очереди приёма)
-            CiPerror(CiTrCancel(0, ptr_trqcnt), "CiTrCancel");  // стираем содержимое очереди приёма
-            CiPerror(CiStart(0), "CiStart");                          // запускаем канал
+            CiPerror(CiSetBaud(0, BCI_250K), "CiSetBaud");        // конфигурируем канал (устанавливаем скорость)
+            CiPerror(CiRcQueResize(0, 4), "CiRcQueResize");       // конфигурируем канал (размер очереди приёма)
+            CiPerror(CiTrCancel(0, ptr_trqcnt), "CiTrCancel");    // стираем содержимое очереди приёма
+            CiPerror(CiStart(0), "CiStart");                      // запускаем канал
             ui->pushButton_6->setText("Отключить адаптер");
             can_state = ON;
         } else {
-            CiPerror(CiStop(0), "CiStop");               // останавливаем канал
-            CiPerror(CiClose(0), "CiClose");              // закрываем канал 0
+            CiPerror(CiStop(0), "CiStop");                         // останавливаем канал
+            CiPerror(CiClose(0), "CiClose");                       // закрываем канал 0
             ui->pushButton_6->setText("Подключить адаптер");
             ui->statusbar->showMessage("Адаптер отключен");
             can_state = OFF;

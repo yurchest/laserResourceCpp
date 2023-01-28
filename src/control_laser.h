@@ -9,13 +9,13 @@
 #define GREEN_LED QPixmap(":/leds/green-led-on.png")
 #define BLUE_LED QPixmap(":/leds/blue-led-on.png")
 
-#define ID_STATUS 0x10
-#define ID_LASER_ON 0x10
-#define ID_LASER_OFF 0x10
-#define ID_LASER_SYNC 0x10
-#define ID_SETTINGS_FREQ_T 0x50
-#define ID_SETTINGS_ENERGY 0x51
-#define ID_ENERGY_DIAD 0x52
+#define ID_STATUS           0x01    // Статусный паке
+#define ID_LASER_ON         0x02    // Пакет-команда ВКЛ
+#define ID_LASER_OFF        0x03    // Пакет-команда ВЫКЛ
+#define ID_LASER_SYNC       0x04    // Пакет-команда ВНУТР/ВНЕШН
+#define ID_SETTINGS_FREQ_T  0x05    // Пакет данных (Частота, время накачек)
+#define ID_SETTINGS_ENERGY  0x06    // Пакет данных (мин/макс энергия 1064/532)
+#define ID_ENERGY_DIAD      0x07    // Пакет данных (измерения фотодиодов)
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -45,10 +45,10 @@ private:
     QString brd_manuf;     // производитель платы
 
     canmsg_t rx_buffer[4];
-    uint8_t rx_data_status[8];
-    uint8_t rx_data_settings_freq_t[8];
-    uint8_t rx_data_energy[8];
-    uint8_t rx_data_energy_diag[8];
+    // uint8_t rx_data_status[8];
+    // uint8_t rx_data_settings_freq_t[8];
+    // uint8_t rx_data_energy[8];
+    // uint8_t rx_data_energy_diag[8];
 
     uint8_t tx_data_freg_t[8]; // частота, время накачки 1,2
     uint8_t tx_data_energy[8]; // мин, макс энергия 1064, 532
@@ -79,7 +79,7 @@ private:
     // UI functions
     void timers_init();
     void can_arrays_init();
-    void update_leds();
+    
 
     // CAN functions
     _s16 board_info();
@@ -91,9 +91,10 @@ private:
     void read_t2();
     void read_energy();
 
-    void update_freq_t();
-    void update_energy();
-    void update_energy_diag();
+    void update_leds(const _u8 *);
+    void update_freq_t(const _u8*);
+    void update_energy(const _u8 *);
+    void update_energy_diag(const _u8 *);
 
 private slots:
     void send_laser_on();

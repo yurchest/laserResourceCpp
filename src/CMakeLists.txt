@@ -1,12 +1,12 @@
 set(SOURCES
-    main.cpp
-    control_laser.cpp
-    control_laser.ui
-    ${CMAKE_SOURCE_DIR}/png/png.qrc
-    can.cpp
-    gui_update.cpp
-    settings_tab.cpp
-)
+        main.cpp
+        control_laser.cpp
+        control_laser.ui
+        ${CMAKE_SOURCE_DIR}/png/png.qrc
+        can.cpp
+        gui_update.cpp
+        settings_tab.cpp
+        )
 
 # Set path to our custom CMAKE scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
@@ -19,32 +19,32 @@ FILE(GLOB_RECURSE HeaderFiles "${CMAKE_SOURCE_DIR}/src/*.h")
 add_custom_target(headers SOURCES ${HeaderFiles})
 
 add_executable(Laser
-    ${SOURCES}
-)
+        ${SOURCES}
+        )
 
+set(LIBS
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets)
 
-target_link_libraries(Laser PRIVATE
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Widgets
-   ${CMAKE_SOURCE_DIR}/lib/win/chai.dll
-   ${CMAKE_SOURCE_DIR}/lib/win/ftd2xx.lib
-    )
-
-
+IF (WIN32)
+    target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/chai.dll)
+ELSE ()
+    target_link_libraries(Laser PRIVATE ${LIBS}  ${CMAKE_SOURCE_DIR}/lib/unix/chai.a ${CMAKE_SOURCE_DIR}/lib/unix/ftd2xx.a)
+ENDIF ()
 
 
 # Сборка в папку LaserProgram
 IF (WIN32)
     set_target_properties(Laser PROPERTIES
-        MACOSX_BUNDLE TRUE
-        WIN32_EXECUTABLE TRUE
-    )
+            MACOSX_BUNDLE TRUE
+            WIN32_EXECUTABLE TRUE
+            )
     file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/LaserProgram/)
-    add_custom_command(TARGET Laser 
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:Laser> "${CMAKE_SOURCE_DIR}/LaserProgram/") 
-        
+    add_custom_command(TARGET Laser
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:Laser> "${CMAKE_SOURCE_DIR}/LaserProgram/")
+
 
     windeployqt(Laser)
 
