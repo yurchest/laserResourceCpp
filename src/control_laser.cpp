@@ -35,8 +35,6 @@ void control_laser::can_arrays_init(void)
     is_update_freq_t = true;
     is_update_energy = true;
 
-    uint8_t init_array[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-
     tx_laser_on_off[0] = LASER_ON_OFF;
     tx_laser_sync[0] = LASER_SYNC;
 

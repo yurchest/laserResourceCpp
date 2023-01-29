@@ -10,8 +10,6 @@ void control_laser::receive_msg() {
     uint8_t array2[8] = {1, 245, 0, 201, 0, 202, 7, 8};
     
     std::memcpy(test_frame.data, array2, 8);
-    std::memcpy(test_frame.data, array2, 8);
-    std::memcpy(test_frame.data, array2, 8);
     update_energy_diag(test_frame.data);
     update_energy(test_frame.data);
     update_leds(test_frame.data);

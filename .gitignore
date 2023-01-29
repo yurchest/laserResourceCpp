@@ -3,3 +3,5 @@
 /.idea/*
 /LaserProgram/*
 /.vscode/*
+/build_clion/*
+/.cache/*
