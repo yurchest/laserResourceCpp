@@ -56,5 +56,4 @@ void control_laser::read_energy() {
     tx_data_energy[DL] = energy_532_max >> 8;
     tx_data_energy[DH] = energy_532_max;
 
-    // TODO
 };

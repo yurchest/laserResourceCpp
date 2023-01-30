@@ -78,17 +78,15 @@ _s16 control_laser::board_info() {
 }
 
 // Функция подключения/отключения CAN - адаптера
-void control_laser::connect_adapter() {
+void control_laser::connect_disconnect_adapter() {
     _u16 trqcnt = 0;    // Вспомогательная переменная для хранения кол-ва стёртых посылок
     _u16 *ptr_trqcnt = &trqcnt;
 
     if (board_info() > 0) {
         if (can_state == OFF) {
             CiPerror(CiOpen(CHANEL_NUMBER, CIO_CAN11), "CiOpen");             // открываем канал 0
-            CiPerror(CiSetBaud(CHANEL_NUMBER, BCI_250K),
-                     "CiSetBaud");             // конфигурируем канал (устанавливаем скорость)
-            CiPerror(CiRcQueResize(CHANEL_NUMBER, 4),
-                     "CiRcQueResize");       // конфигурируем канал (размер очереди приёма)
+            CiPerror(CiSetBaud(CHANEL_NUMBER, BCI_250K),"CiSetBaud");             // конфигурируем канал (устанавливаем скорость)
+            CiPerror(CiRcQueResize(CHANEL_NUMBER, 4),"CiRcQueResize");       // конфигурируем канал (размер очереди приёма)
             CiPerror(CiTrCancel(CHANEL_NUMBER, ptr_trqcnt), "CiTrCancel");  // стираем содержимое очереди приёма
             CiPerror(CiStart(CHANEL_NUMBER), "CiStart");                          // запускаем канал
             ui->pushButton_6->setText("Отключить адаптер");

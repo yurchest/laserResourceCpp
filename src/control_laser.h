@@ -97,17 +97,17 @@ private:
     void read_t2();
     void read_energy();
 
-    void gui_update(canmsg_t);
-    void update_leds(const _u8*);
-    void update_freq_t(const _u8*);
-    void update_energy(const _u8*);
-    void update_energy_diag(const _u8*);
+    void gui_update(canmsg_t rx_frame);
+    void update_leds(const _u8 *rx_data_status);
+    void update_freq_t(const _u8 *rx_data_settings_freq_t);
+    void update_energy(const _u8 *rx_data_energy);
+    void update_energy_diag(const _u8 *rx_data_energy_diag);
 
-    void check_settings(const _u8* , _u32 );
+    void check_settings(const _u8 *rx_data_settings , _u32 ID);
 
 private slots:
-    void send_command(_u8);
-    void connect_adapter();
+    void send_command(_u8 ID_TYPE_COMMAND);
+    void connect_disconnect_adapter();
     void receive_msg();
     void apply_settings();
 };
