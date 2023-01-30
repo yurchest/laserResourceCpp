@@ -19,12 +19,12 @@
 // 1 Byte
 #define BIT_GVG_ERROR       (1<<7)
 #define BIT_GVG_READY       (1<<6)
-#define BIT_MT_ERROR        (1<<5)      //
-#define BIT_MT_READY        (1<<4)      //
+#define BIT_MT_ERROR        (1<<5)
+#define BIT_MT_READY        (1<<4)
 #define BIT_SYNC            (1<<3)
-#define BIT_RU_LOC          (1<<2)
-#define BIT_EMITTING        (1<<1)
-#define BIT                 (1<<0)
+#define BIT_EMITTING        (1<<2)
+#define BIT_1               (1<<1)
+#define BIT_2               (1<<0)
 
 
 #endif // BITS_H

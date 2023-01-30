@@ -12,12 +12,15 @@
 #define GREEN_TICK QPixmap(":/tick_cross/green_tick.png")
 #define RED_CROSS QPixmap(":/tick_cross/red_cross.png")
 
+#define CHANEL_NUMBER               0x0
 
-#define ID_COMMAND          0x01    // Пакет команды
-#define ID_STATUS           0x02    // Статусный пакет
-#define ID_SETTINGS_FREQ_T  0x03    // Пакет данных (Частота, время накачек)
-#define ID_SETTINGS_ENERGY  0x04    // Пакет данных (мин/макс энергия 1064/532)
-#define ID_ENERGY_DIAD      0x05    // Пакет данных (измерения фотодиодов)
+#define ID_COMMAND                  0x01    // Пакет команды
+#define ID_STATUS                   0x02    // Статусный пакет
+#define ID_SETTINGS_FREQ_T          0x03    // Пакет данных (Частота, время накачек)
+#define ID_SETTINGS_ENERGY          0x04    // Пакет данных (мин/макс энергия 1064/532)
+#define ID_WRITE_SETTINGS_FREQ_T    0x05    // Пакет записи данных (Частота, время накачек)
+#define ID_WRITE_SETTINGS_ENERGY    0x06    // Пакет записи данных (мин/макс энергия 1064/532)
+#define ID_ENERGY_DIAG              0x07    // Пакет данных (измерения фотодиодов)
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -46,7 +49,6 @@ private:
     QString brd_name;      // наименование платы адаптера
     QString brd_manuf;     // производитель платы
 
-    canmsg_t rx_buffer[4];
     // uint8_t rx_data_status[8];
     // uint8_t rx_data_settings_freq_t[8];
     // uint8_t rx_data_energy[8];
@@ -95,6 +97,7 @@ private:
     void read_t2();
     void read_energy();
 
+    void gui_update(canmsg_t);
     void update_leds(const _u8*);
     void update_freq_t(const _u8*);
     void update_energy(const _u8*);

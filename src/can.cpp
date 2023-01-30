@@ -22,38 +22,36 @@ void control_laser::receive_msg() {
     //
 
     if (can_state) {
-        CiPerror(CiRead(1, rx_buffer, 4), "CiRead");
+        canmsg_t rx_buffer[1];
+        canwait_t cw[1];
+        cw[0].chan = CHANEL_NUMBER;
+        cw[0].wflags = CI_WAIT_RC | CI_WAIT_ER;
+
+        _s16 ret;
+
+        /* Блокирует работу потока выполнения до наступления заданного события или до
+        наступления тайм-аута в одном из указанных каналов ввода-вывода. */
+        ret = CiWaitEvent(cw, 1, 1000);
+
+
+        if (ret > 0) {
+            if (cw[0].rflags & CI_WAIT_RC) { // получен кадр в канале cw[0].chan
+                CiPerror(CiRead(CHANEL_NUMBER, rx_buffer, 1), "CiRead");
+            }
+            if (cw[0].rflags & CI_WAIT_ER) { // в канале cw[0].chan произошла ошибка
+                // читаем ошибки с помощью CiErrsGetClear()
+                //CiErrsGetClear(chNum, &errs1);
+            }
+        } else if (ret < 0) {
+            // ошибка CiWaitEvent()
+        } else { // ret == 0
+            // timeout
+        }
 
         for (canmsg_t rx_frame: rx_buffer) {
-            switch (rx_frame.id) {
-                case ID_STATUS:
-                    update_leds(rx_frame.data);
-                    break;
-
-                case ID_SETTINGS_FREQ_T:
-                    if (is_update_freq_t) {
-                        update_freq_t(rx_frame.data);
-                        check_settings(rx_frame.data, ID_SETTINGS_FREQ_T);
-                        is_update_freq_t = false;
-                    }
-                    break;
-
-                case ID_SETTINGS_ENERGY:
-                    if (is_update_energy) {
-                        update_energy(rx_frame.data);
-                        check_settings(rx_frame.data, ID_SETTINGS_ENERGY);
-                        is_update_energy = false;
-                    }
-                    break;
-
-                case ID_ENERGY_DIAD:
-                    update_energy_diag(rx_frame.data);
-                    break;
-
-                default:
-                    break;
-            }
+            gui_update(rx_frame);
         }
+
     }
 }
 
@@ -86,16 +84,18 @@ void control_laser::connect_adapter() {
 
     if (board_info() > 0) {
         if (can_state == OFF) {
-            CiPerror(CiOpen(0, CIO_CAN11), "CiOpen");             // открываем канал 0
-            CiPerror(CiSetBaud(0, BCI_250K), "CiSetBaud");        // конфигурируем канал (устанавливаем скорость)
-            CiPerror(CiRcQueResize(0, 4), "CiRcQueResize");       // конфигурируем канал (размер очереди приёма)
-            CiPerror(CiTrCancel(0, ptr_trqcnt), "CiTrCancel");    // стираем содержимое очереди приёма
-            CiPerror(CiStart(0), "CiStart");                      // запускаем канал
+            CiPerror(CiOpen(CHANEL_NUMBER, CIO_CAN11), "CiOpen");             // открываем канал 0
+            CiPerror(CiSetBaud(CHANEL_NUMBER, BCI_250K),
+                     "CiSetBaud");             // конфигурируем канал (устанавливаем скорость)
+            CiPerror(CiRcQueResize(CHANEL_NUMBER, 4),
+                     "CiRcQueResize");       // конфигурируем канал (размер очереди приёма)
+            CiPerror(CiTrCancel(CHANEL_NUMBER, ptr_trqcnt), "CiTrCancel");  // стираем содержимое очереди приёма
+            CiPerror(CiStart(CHANEL_NUMBER), "CiStart");                          // запускаем канал
             ui->pushButton_6->setText("Отключить адаптер");
             can_state = ON;
         } else {
-            CiPerror(CiStop(0), "CiStop");                         // останавливаем канал
-            CiPerror(CiClose(0), "CiClose");                       // закрываем канал 0
+            CiPerror(CiStop(CHANEL_NUMBER), "CiStop");                         // останавливаем канал
+            CiPerror(CiClose(CHANEL_NUMBER), "CiClose");                       // закрываем канал 0
             ui->pushButton_6->setText("Подключить адаптер");
             ui->statusbar->showMessage("Адаптер отключен");
             can_state = OFF;
@@ -110,8 +110,8 @@ void control_laser::send_settings_data() {
         int chaierr;
         int *p_chaierr = &chaierr;
 
-        tx_frame_t[0].id = ID_SETTINGS_FREQ_T;
-        tx_frame_t[1].id = ID_SETTINGS_ENERGY;
+        tx_frame_t[0].id = ID_WRITE_SETTINGS_FREQ_T;
+        tx_frame_t[1].id = ID_WRITE_SETTINGS_ENERGY;
 
         tx_frame_t[0].len = 8;
         tx_frame_t[1].len = 8;
@@ -122,7 +122,7 @@ void control_laser::send_settings_data() {
 //        CiPerror(CiTransmit(0, &tx_frame_t[0]), "CiTransmit Settings Freg, T");
 //        CiPerror(CiTransmit(0, &tx_frame_t[1]), "CiTransmit Settings Energy");
 
-        CiPerror(CiTransmitSeries(0, tx_frame_t, 2, p_chaierr), "CiTransmit Settings");
+        CiPerror(CiTransmitSeries(CHANEL_NUMBER, tx_frame_t, 2, p_chaierr), "CiTransmit Settings");
     }
 }
 
@@ -137,22 +137,21 @@ void control_laser::send_command(_u8 ID_TYPE_COMMAND) {
         switch (ID_TYPE_COMMAND) {
             case LASER_ON_OFF:
                 std::memcpy(tx.data, tx_laser_on_off, 8);
-                CiPerror(CiTransmit(0, &tx), "CiTransmit LASER ON");
                 break;
 
             case LASER_SYNC:
                 std::memcpy(tx.data, tx_laser_sync, 8);
-                CiPerror(CiTransmit(0, &tx), "CiTransmit LASER SYNC");
                 break;
 
             case LASER_DRYING_OFF:
                 std::memcpy(tx.data, tx_laser_drying_off, 8);
-                CiPerror(CiTransmit(0, &tx), "CiTransmit LASER DRYING OFF");
                 break;
 
             default:
                 break;
-
         }
+
+        CiPerror(CiTransmit(CHANEL_NUMBER, &tx), "CiTransmit COMMAND");
+
     }
 }

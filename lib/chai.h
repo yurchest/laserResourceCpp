@@ -396,7 +396,7 @@ typedef int can_waitobj_t;
 	// don't use in new code
 	DECLHEAD _s16 CiSetCB(_u8 chan, _u8 ev, void (*ci_handler)(_s16));
 	DECLHEAD _s16 CiSetCBex(_u8 chan, _u8 ev,
-							void (*ci_cb_ex)(_u8, _s16, void *),
+					        		void (*ci_cb_ex)(_u8, _s16, void *),
 							void *udata);
 	DECLHEAD _s16 CiCB_lock(void);
 	DECLHEAD _s16 CiCB_unlock(void);
