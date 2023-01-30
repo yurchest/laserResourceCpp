@@ -54,8 +54,11 @@ private:
 
     uint8_t tx_data_freg_t[8]; // частота, время накачки 1,2
     uint8_t tx_data_energy[8]; // мин, макс энергия 1064, 532
+
+    // Команды
     uint8_t tx_laser_on_off[8];
     uint8_t tx_laser_sync[8];
+    uint8_t tx_laser_drying_off[8];
 
     typedef enum on_off
     {
@@ -100,8 +103,7 @@ private:
     void check_settings(const _u8* , _u32 );
 
 private slots:
-    void send_laser_on_off();
-    void send_change_sync();
+    void send_command(_u8);
     void connect_adapter();
     void receive_msg();
     void apply_settings();

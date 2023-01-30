@@ -39,12 +39,13 @@ void control_laser::check_settings(const _u8 *rx_data_settings , _u32 ID){
 
         case ID_SETTINGS_ENERGY:
             {
-                u_long rx_energy_1064_min = (u_long)((rx_data_settings[AL] << 8) | rx_data_settings[AH]) / 100;
-                u_long rx_energy_1064_max = (u_long)((rx_data_settings[BL] << 8) | rx_data_settings[BH]) / 100;
-                u_long rx_energy_532_min  = (u_long)((rx_data_settings[CL] << 8) | rx_data_settings[CH]) / 100;
-                u_long rx_energy_532_max  = (u_long)((rx_data_settings[DL] << 8) | rx_data_settings[DH]) / 100;
-                
-                if (ui->doubleSpinBox->value() == rx_energy_1064_min & ui->doubleSpinBox_3->value() == rx_energy_1064_max) { 
+                double rx_energy_1064_min = (double)((rx_data_settings[AL] << 8) | rx_data_settings[AH]) / 100;
+                double rx_energy_1064_max = (double)((rx_data_settings[BL] << 8) | rx_data_settings[BH]) / 100;
+                double rx_energy_532_min  = (double)((rx_data_settings[CL] << 8) | rx_data_settings[CH]) / 100;
+                double rx_energy_532_max  = (double)((rx_data_settings[DL] << 8) | rx_data_settings[DH]) / 100;
+
+
+                if (ui->doubleSpinBox->value() == rx_energy_1064_min & ui->doubleSpinBox_3->value() == rx_energy_1064_max) {
                         ui->label_15->setPixmap(GREEN_TICK); 
                     }
                 else {ui->label_15->setPixmap(RED_CROSS);}
@@ -73,10 +74,10 @@ void control_laser::update_freq_t(const _u8 *rx_data_settings_freq_t){
 
 void control_laser::update_energy(const _u8 *rx_data_energy){
 
-    u_long energy_1064_min = (u_long)((rx_data_energy[AL] << 8) | rx_data_energy[AH]) / 100;
-    u_long energy_1064_max = (u_long)((rx_data_energy[BL] << 8) | rx_data_energy[BH]) / 100;
-    u_long energy_532_min  = (u_long)((rx_data_energy[CL] << 8) | rx_data_energy[CH]) / 100;
-    u_long energy_532_max  = (u_long)((rx_data_energy[DL] << 8) | rx_data_energy[DH]) / 100;
+    double energy_1064_min = (double)((rx_data_energy[AL] << 8) | rx_data_energy[AH]) / 100;
+    double energy_1064_max = (double)((rx_data_energy[BL] << 8) | rx_data_energy[BH]) / 100;
+    double energy_532_min  = (double)((rx_data_energy[CL] << 8) | rx_data_energy[CH]) / 100;
+    double energy_532_max  = (double)((rx_data_energy[DL] << 8) | rx_data_energy[DH]) / 100;
 
     ui->doubleSpinBox   ->setValue(energy_1064_min);
     ui->doubleSpinBox_3 ->setValue(energy_1064_max);

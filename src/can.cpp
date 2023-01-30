@@ -6,9 +6,9 @@ void control_laser::receive_msg() {
 
     // TEST
     canmsg_t test_frame;
-    
+
     uint8_t array2[8] = {1, 245, 0, 201, 0, 202, 7, 8};
-    
+
     std::memcpy(test_frame.data, array2, 8);
     update_energy_diag(test_frame.data);
     update_energy(test_frame.data);
@@ -126,25 +126,33 @@ void control_laser::send_settings_data() {
     }
 }
 
-void control_laser::send_laser_on_off() {
-    if (can_state)    // если адаптер подключен
+
+void control_laser::send_command(_u8 ID_TYPE_COMMAND) {
+    if (can_state)  // если адаптер подключен
     {
         canmsg_t tx;
-        tx.id = ID_COMMAND;
         tx.len = 1;
-        std::memcpy(tx.data, tx_laser_on_off, 8);
-        CiPerror(CiTransmit(0, &tx), "CiTransmit LASER ON");
-    }
-}
-
-
-void control_laser::send_change_sync() {
-    if (can_state)    // если адаптер подключен
-    {
-        canmsg_t tx;
         tx.id = ID_COMMAND;
-        tx.len = 1;
-        std::memcpy(tx.data, tx_laser_sync, 8);
-        CiPerror(CiTransmit(0, &tx), "CiTransmit LASER SYNC");
+
+        switch (ID_TYPE_COMMAND) {
+            case LASER_ON_OFF:
+                std::memcpy(tx.data, tx_laser_on_off, 8);
+                CiPerror(CiTransmit(0, &tx), "CiTransmit LASER ON");
+                break;
+
+            case LASER_SYNC:
+                std::memcpy(tx.data, tx_laser_sync, 8);
+                CiPerror(CiTransmit(0, &tx), "CiTransmit LASER SYNC");
+                break;
+
+            case LASER_DRYING_OFF:
+                std::memcpy(tx.data, tx_laser_drying_off, 8);
+                CiPerror(CiTransmit(0, &tx), "CiTransmit LASER DRYING OFF");
+                break;
+
+            default:
+                break;
+
+        }
     }
 }
