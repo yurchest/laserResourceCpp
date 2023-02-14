@@ -127,6 +127,13 @@ void control_laser::send_settings_data() {
 
 
 void control_laser::send_command(_u8 ID_TYPE_COMMAND) {
+
+/*
+    // TODO TEST
+    ui->pushButton->setProperty("border", "red");
+    ui->pushButton->setStyle(QApplication::style());
+*/
+
     if (can_state)  // если адаптер подключен
     {
         canmsg_t tx;

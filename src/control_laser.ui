@@ -38,13 +38,13 @@
   border-style: solid;
   border-radius: 20px;
   padding: 2px;
-  background-color: rgba(0, 95, 248,20);
+background: qradialgradient(cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4, radius: 1.35, stop: 0 rgba(0, 95, 248,30), stop: 1 rgba(0, 95, 248,100));
 }
 
 QPushButton:hover {
     background: qradialgradient(
         cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 rgba(0, 95, 248,80), stop: 1 rgba(0, 95, 248,10)
+        radius: 1.35, stop: 0 rgba(0, 95, 248,100), stop: 1 rgba(0, 95, 248,50)
         );
     }
 
@@ -55,7 +55,18 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 rgba(0, 95, 248,30), stop: 1 rgba(0, 95, 248,0)
         );
 
-    }
+}
+
+QPushButton[border=&quot;green&quot;]{
+	border-color: rgba(0, 255, 0,200);
+}
+
+QPushButton[border=&quot;red&quot;]{
+	border-color: rgba(255, 0, 0,200);
+}
+
+
+
 
 QLineEdit {
 	border: 1px solid grey;
@@ -67,7 +78,7 @@ QLineEdit {
 	border-color: rgb(2, 129, 196);
 	border-radius: 40px;
 }
-</string>
+ </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
@@ -115,7 +126,7 @@ QLineEdit {
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -2531,7 +2542,7 @@ border-color: rgb(2, 129, 196);</string>
            <enum>QAbstractSpinBox::UpDownArrows</enum>
           </property>
           <property name="maximum">
-           <number>1000</number>
+           <number>1500</number>
           </property>
          </widget>
         </item>

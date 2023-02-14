@@ -12,6 +12,7 @@
 #define GREEN_TICK QPixmap(":/tick_cross/green_tick.png")
 #define RED_CROSS QPixmap(":/tick_cross/red_cross.png")
 
+
 #define CHANEL_NUMBER               0x0
 
 #define ID_COMMAND                  0x01    // Пакет команды
