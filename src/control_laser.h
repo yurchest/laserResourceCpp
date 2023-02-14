@@ -102,6 +102,7 @@ private:
     void update_freq_t(const _u8 *rx_data_settings_freq_t);
     void update_energy(const _u8 *rx_data_energy);
     void update_energy_diag(const _u8 *rx_data_energy_diag);
+    void reset_leds();
 
     void check_settings(const _u8 *rx_data_settings , _u32 ID);
 

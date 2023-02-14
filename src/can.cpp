@@ -44,14 +44,15 @@ void control_laser::receive_msg() {
             }
         } else if (ret < 0) {
             // ошибка CiWaitEvent()
+            reset_leds();
         } else { // ret == 0
             // timeout
+            reset_leds();
         }
 
         for (canmsg_t rx_frame: rx_buffer) {
             gui_update(rx_frame);
         }
-
     }
 }
 

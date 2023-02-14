@@ -125,3 +125,31 @@ void control_laser::update_energy_diag(const _u8 *rx_data_energy_diag) {
     ui->lineEdit->setText(QString::number(energy_532));
 
 }
+
+void control_laser::reset_leds() {
+    const char* labels_to_reset[20] = {"label_mn1_error",
+                                      "label_mn1_on",
+                                      "label_mn1_ready",
+                                      "label_mn2_error",
+                                      "label_mn2_on",
+                                      "label_mn2_ready",
+                                      "label_ae_error",
+                                      "label_ae_ready",
+                                      "label_gvg_error",
+                                      "label_gvg_ready",
+                                      "label_mt_error",
+                                      "label_mt_ready",
+                                      "label_connect_error",
+                                      "label_connect_ready",
+                                      "label_sync_vnesh",
+                                      "label_sync_vnutr",
+                                      "label_energy_1064",
+                                      "label_energy_532"};
+
+    for(const char* label_name: labels_to_reset){
+        auto *label = findChild<QLabel*>(label_name);
+        if (label){
+            label->setPixmap(BLUE_LED);
+        }
+    }
+}
