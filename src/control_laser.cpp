@@ -39,6 +39,7 @@ void control_laser::onTabChanged(int tabIndex) {
     if (tabIndex == 1) {
         if (not isAuthorized){
             ui->label_54->setText("");
+            ui->lineEdit_5->setFocus();
             ui->stackedWidget->setCurrentWidget(ui->page_2);
         } else {
             ui->stackedWidget->setCurrentWidget(ui->page);

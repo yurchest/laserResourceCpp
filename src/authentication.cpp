@@ -18,5 +18,6 @@ void control_laser::button_auth_click() {
     } else {
         ui->lineEdit_5->setText("");
         ui->label_54->setText("Неверный пароль");
+        ui->lineEdit_5->setFocus();
     }
 }
