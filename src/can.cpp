@@ -1,6 +1,6 @@
 #include "control_laser.h"
 #include "ui_control_laser.h"
-
+#include <iostream>
 
 void control_laser::receive_msg() {
 
@@ -102,7 +102,13 @@ void control_laser::connect_disconnect_adapter() {
     }
 }
 
-void control_laser::send_settings_data() {
+void control_laser::send_settings_data(const _u8 *tx_data_freq_t, const _u8 *tx_data_energy) {
+    // TEST
+    /*
+    for (_u8 i = 0; i < 7; i+=2){
+        qDebug() << (tx_data_freq_t[i] << 8 | tx_data_freq_t[i+1]);
+    }
+    */
     if (can_state)    // если адаптер подключен
     {
         canmsg_t tx_frame_t[2];
@@ -115,7 +121,7 @@ void control_laser::send_settings_data() {
         tx_frame_t[0].len = 8;
         tx_frame_t[1].len = 8;
 
-        memcpy(tx_frame_t[0].data, tx_data_freg_t, 8);
+        memcpy(tx_frame_t[0].data, tx_data_freq_t, 8);
         memcpy(tx_frame_t[1].data, tx_data_energy, 8);
 
 //        CiPerror(CiTransmit(0, &tx_frame_t[0]), "CiTransmit Settings Freg, T");

@@ -55,13 +55,10 @@ private:
     // uint8_t rx_data_energy[8];
     // uint8_t rx_data_energy_diag[8];
 
-    uint8_t tx_data_freg_t[8]; // частота, время накачки 1,2
-    uint8_t tx_data_energy[8]; // мин, макс энергия 1064, 532
-
     // Команды
-    uint8_t tx_laser_on_off[8];
-    uint8_t tx_laser_sync[8];
-    uint8_t tx_laser_drying_off[8];
+    _u8 tx_laser_on_off[8];
+    _u8 tx_laser_sync[8];
+    _u8 tx_laser_drying_off[8];
 
     typedef enum on_off
     {
@@ -90,13 +87,13 @@ private:
 
     // CAN functions
     _s16 board_info();
-    void send_settings_data();
+    void send_settings_data(const _u8 *tx_data_freq_t, const _u8 *tx_data_energy);
 
     // Settings TAB
-    void read_frequency();
-    void read_t1();
-    void read_t2();
-    void read_energy();
+    void read_frequency(_u8 *tx_data_freq_t);
+    void read_t1(_u8 *tx_data_freq_t);
+    void read_t2(_u8 *tx_data_freq_t);
+    void read_energy(_u8 *tx_data_energy);
 
     void gui_update(canmsg_t rx_frame);
     void update_leds(const _u8 *rx_data_status);

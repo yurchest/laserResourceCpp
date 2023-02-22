@@ -3073,7 +3073,6 @@ border-color: rgb(2, 129, 196);</string>
  </widget>
  <resources>
   <include location="../png/png.qrc"/>
-  <include location="../../../.designer/png/png.qrc"/>
  </resources>
  <connections/>
 </ui>

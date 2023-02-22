@@ -2,39 +2,42 @@
 #include "ui_control_laser.h"
 
 void control_laser::apply_settings() {
-    read_frequency();   // Считываем частоту
-    read_t1();          // Считываем время накачки 1
-    read_t2();          // Считываем время накачки 2
-    read_energy();      // Считываем мин-макс энергию 1064/532
+    _u8 tx_data_freq_t[8]; // частота, время накачки 1,2
+    _u8 tx_data_energy[8]; // мин, макс энергия 1064, 532
 
-    send_settings_data(); // Отправляем посылку (команду записи)
+    read_frequency(tx_data_freq_t);   // Считываем частоту
+    read_t1(tx_data_freq_t);          // Считываем время накачки 1
+    read_t2(tx_data_freq_t);          // Считываем время накачки 2
+    read_energy(tx_data_energy);      // Считываем мин-макс энергию 1064/532
+
+    send_settings_data(tx_data_freq_t, tx_data_energy); // Отправляем посылку (команду записи)
 }
 
-void control_laser::read_frequency() {
+void control_laser::read_frequency(_u8 *tx_data_freq_t) {
     QString str = ui->spinBox->cleanText();
     uint16_t freq = str.toInt(&str_error, 10);
 
-    tx_data_freg_t[AL] = freq >> 8;
-    tx_data_freg_t[AH] = freq;
+    tx_data_freq_t[AL] = freq >> 8;
+    tx_data_freq_t[AH] = freq;
 }
 
-void control_laser::read_t1() {
+void control_laser::read_t1(_u8 *tx_data_freq_t) {
     QString str = ui->spinBox_2->cleanText();
     uint16_t T1 = str.toInt(&str_error, 10);
 
-    tx_data_freg_t[BL] = T1 >> 8;
-    tx_data_freg_t[BH] = T1;
+    tx_data_freq_t[BL] = T1 >> 8;
+    tx_data_freq_t[BH] = T1;
 }
 
-void control_laser::read_t2() {
+void control_laser::read_t2(_u8 *tx_data_freq_t) {
     QString str = ui->spinBox_3->cleanText();
     uint16_t T2 = str.toInt(&str_error, 10);
 
-    tx_data_freg_t[CL] = T2 >> 8;
-    tx_data_freg_t[CH] = T2;
+    tx_data_freq_t[CL] = T2 >> 8;
+    tx_data_freq_t[CH] = T2;
 }
 
-void control_laser::read_energy() {
+void control_laser::read_energy(_u8 *tx_data_energy) {
     QString str = ui->doubleSpinBox->cleanText();
     auto energy_1064_min = static_cast<uint16_t>(100 * str.toFloat());
     str = ui->doubleSpinBox_3->cleanText();
