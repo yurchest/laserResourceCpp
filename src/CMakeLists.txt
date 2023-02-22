@@ -1,3 +1,8 @@
+set (bcrypt
+        ../lib/bcrypt/src/bcrypt.cpp
+        ../lib/bcrypt/src/blowfish.cpp
+        )
+
 set(SOURCES
         main.cpp
         control_laser.cpp
@@ -6,7 +11,8 @@ set(SOURCES
         can.cpp
         gui_update.cpp
         settings_tab.cpp
-        )
+        authentication.cpp
+        ${bcrypt})
 
 # Set path to our custom CMAKE scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")

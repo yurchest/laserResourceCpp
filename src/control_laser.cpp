@@ -7,6 +7,7 @@ control_laser::control_laser(QMainWindow *parent)
 
     ui->setupUi(this);
 
+    isAuthorized = false;
     CiInit();          // инициализируем библиотеку CHAI для can адаптера
     can_arrays_init(); // инициализируем массивы нулями
     timers_init();     // запускаем таймер
@@ -22,12 +23,27 @@ control_laser::control_laser(QMainWindow *parent)
         is_update_freq_t = true;
         is_update_energy = true; });
 
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(onTabChanged(int)));
+    connect(ui->pushButton_7, SIGNAL(clicked(bool)), this, SLOT(button_auth_click()));
+    connect(ui->lineEdit_5, &QLineEdit::returnPressed, this, &control_laser::button_auth_click);
+
     ui->statusbar->showMessage("Подключите адаптер 'Марафон' нажатием на кнопку 'Подключить адаптер'");
 }
 
 control_laser::~control_laser()
 {
     delete ui;
+}
+
+void control_laser::onTabChanged(int tabIndex) {
+    if (tabIndex == 1) {
+        if (not isAuthorized){
+            ui->label_54->setText("");
+            ui->stackedWidget->setCurrentWidget(ui->page_2);
+        } else {
+            ui->stackedWidget->setCurrentWidget(ui->page);
+        }
+    }
 }
 
 void control_laser::can_arrays_init()

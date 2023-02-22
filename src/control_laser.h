@@ -43,6 +43,7 @@ private:
 
     QTimer *timer_rx_data;
 
+    bool isAuthorized;
     bool str_error;
     uint8_t can_state;     // статус сети can (готова к работе или нет)
     bool is_update_freq_t; // Флаг для считывания настроек частоти и вр. накачек
@@ -83,6 +84,7 @@ private:
     // UI functions
     void timers_init();
     void can_arrays_init();
+
     
 
     // CAN functions
@@ -105,6 +107,8 @@ private:
     void check_settings(const _u8 *rx_data_settings , _u32 ID);
 
 private slots:
+    void onTabChanged(int tabIndex);
+    void button_auth_click();
     void send_command(_u8 ID_TYPE_COMMAND);
     void connect_disconnect_adapter();
     void receive_msg();
