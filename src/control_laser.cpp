@@ -72,6 +72,6 @@ void control_laser::can_arrays_init()
 void control_laser::timers_init()
 {
     timer_rx_data = new QTimer();
-    timer_rx_data->start(200);
+    timer_rx_data->start(1000);
     // TODO ?Отключение таймера когда адаптер не подключен?
 }

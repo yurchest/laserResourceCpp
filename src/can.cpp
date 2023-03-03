@@ -34,7 +34,7 @@ void control_laser::receive_msg() {
 
         /* Блокирует работу потока выполнения до наступления заданного события или до
         наступления тайм-аута в одном из указанных каналов ввода-вывода. */
-        ret = CiWaitEvent(cw, 1, 1000);
+//        ret = CiWaitEvent(cw, 1, 1000);
 
 
         if (ret > 0) {
@@ -47,10 +47,10 @@ void control_laser::receive_msg() {
             }
         } else if (ret < 0) {
             // ошибка CiWaitEvent()
-            reset_leds();
+//            reset_leds();
         } else { // ret == 0
             // timeout
-            reset_leds();
+//            reset_leds();
         }
 
         for (canmsg_t rx_frame: rx_buffer) {
@@ -102,7 +102,7 @@ void control_laser::connect_disconnect_adapter() {
     _u16 trqcnt = 0;    // Вспомогательная переменная для хранения кол-ва стёртых посылок
     _u16 *ptr_trqcnt = &trqcnt;
 
-    if (board_info() > 0) {
+    if (board_info() >= 0) {
         if (can_state == OFF) {
             CiPerror(CiOpen(CHANEL_NUMBER, CIO_CAN11), "CiOpen");             // открываем канал 0
             CiPerror(CiSetBaud(CHANEL_NUMBER, BCI_250K),"CiSetBaud");             // конфигурируем канал (устанавливаем скорость)
