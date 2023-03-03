@@ -7,17 +7,20 @@ void control_laser::receive_msg() {
     // TEST
     canmsg_t test_frame;
 
-    uint8_t array2[8] = {1, 245, 0, 201, 0, 202, 7, 8};
+    uint8_t array2[8] = {1, 245, 0, 201, 0, 202, 0, 54};
 
     std::memcpy(test_frame.data, array2, 8);
     update_energy_diag(test_frame.data);
-    update_energy(test_frame.data);
     update_leds(test_frame.data);
     check_settings(test_frame.data, ID_SETTINGS_FREQ_T);
     check_settings(test_frame.data, ID_SETTINGS_ENERGY);
     if (is_update_freq_t) {
         update_freq_t(test_frame.data);
         is_update_freq_t = false;
+    }
+    if (is_update_energy){
+        update_energy(test_frame.data);
+        is_update_energy = false;
     }
     //
 
@@ -60,6 +63,22 @@ _s16 control_laser::board_info() {
     _s16 ret;               // код, возвращаемый ф-ией CiBoardInfo(&binfo)
     canboard_t binfo;       // объект структуры информации об адаптере
     uint8_t chan_cnt = 0;   // кол-во доступных каналов
+
+//    _s16 i, j;
+//    int cnt = 0;
+//    for (i = 0; i < CI_BRD_NUMS; i++) {
+//        binfo.brdnum = (_u8) i;
+//        ret = CiBoardInfo(&binfo);
+//        if (ret < 0)
+//            continue;
+//        printf("%s (%s): \n", binfo.name, binfo.manufact);
+//        for (j = 0; j < 4; j++) {
+//            if (binfo.chip[j] >= 0) {
+//                printf("channel %d\n", binfo.chip[j]);
+//                cnt++;
+//            }
+//        }
+//    }
 
     binfo.brdnum = 0;           // задаём порядковый номер проверяемого адаптера
     ret = CiBoardInfo(&binfo);  // проверяем подключенный адаптер
@@ -106,9 +125,10 @@ void control_laser::send_settings_data(const _u8 *tx_data_freq_t, const _u8 *tx_
     // TEST
     /*
     for (_u8 i = 0; i < 7; i+=2){
-        qDebug() << (tx_data_freq_t[i] << 8 | tx_data_freq_t[i+1]);
+        qDebug() << (tx_data_energy[i] << 8 | tx_data_energy[i+1]);
     }
     */
+
     if (can_state)    // если адаптер подключен
     {
         canmsg_t tx_frame_t[2];

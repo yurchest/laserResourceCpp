@@ -3,7 +3,11 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtCore/QTimer>
-#include "../lib/chai.h"
+//#include "../lib/chai.h"
+extern "C" {
+    #include "../lib/chai/src/chai.h"
+};
+
 #include "bits.h"
 
 #define RED_LED QPixmap(":/leds/led-red-on.png")

@@ -2013,7 +2013,7 @@ border-color: rgb(2, 129, 196);</string>
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QFrame" name="frame_5">
@@ -3106,6 +3106,12 @@ border-color: rgb(2, 129, 196);</string>
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <family>Georgia</family>
@@ -3148,6 +3154,12 @@ border-color: rgb(2, 129, 196);</string>
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="font">
            <font>
             <family>Georgia</family>
@@ -3183,7 +3195,7 @@ border-color: rgb(2, 129, 196);</string>
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>0</height>
+            <height>30</height>
            </size>
           </property>
           <property name="font">
@@ -3204,6 +3216,12 @@ border-color: rgb(2, 129, 196);</string>
          <widget class="QLineEdit" name="lineEdit_3">
           <property name="enabled">
            <bool>true</bool>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
           </property>
           <property name="font">
            <font>

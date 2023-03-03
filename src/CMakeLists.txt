@@ -3,6 +3,12 @@ set (bcrypt
         ../lib/bcrypt/src/blowfish.cpp
         )
 
+set (chai
+        ../lib/chai/src/chai-cbunp.c
+        ../lib/chai/src/chai-lnx.c
+        ../lib/chai/src/unican.h
+        )
+
 set(SOURCES
         main.cpp
         control_laser.cpp
@@ -12,7 +18,9 @@ set(SOURCES
         gui_update.cpp
         settings_tab.cpp
         authentication.cpp
-        ${bcrypt})
+        ${bcrypt}
+        ${chai}
+        )
 
 # Set path to our custom CMAKE scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
@@ -36,7 +44,7 @@ set(LIBS
 IF (WIN32)
     target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/win/chai.dll)
 ELSE ()
-    target_link_libraries(Laser PRIVATE ${LIBS}  ${CMAKE_SOURCE_DIR}/lib/unix/chai.a ${CMAKE_SOURCE_DIR}/lib/unix/ftd2xx.a)
+    target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/unix/ftd2xx.a)
 ENDIF ()
 
 

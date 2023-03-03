@@ -1,6 +1,7 @@
 #include "control_laser.h"
 #include "ui_control_laser.h"
 
+
 control_laser::control_laser(QMainWindow *parent)
     : QMainWindow(parent), ui(new Ui::control_laser)
 {
@@ -8,7 +9,16 @@ control_laser::control_laser(QMainWindow *parent)
     ui->setupUi(this);
 
     isAuthorized = false;
-    CiInit();          // инициализируем библиотеку CHAI для can адаптера
+
+    unsigned long chver = CiGetLibVer();
+    printf("using CHAI %d.%d.%d\n\n", VERMAJ(chver), VERMIN(chver),
+           VERSUB(chver));
+
+    if (CiInit() < 0){ // инициализируем библиотеку CHAI для can адаптера
+        printf("Can`t INIT CHAI");
+        exit(1);
+    }
+
     can_arrays_init(); // инициализируем массивы нулями
     timers_init();     // запускаем таймер
 

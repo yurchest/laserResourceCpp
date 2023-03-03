@@ -1,7 +1,7 @@
 /*
 *  chai.h
 *  CAN Hardware Abstraction Interface
-*  Version 2.14.x
+*  Version 2.11.x
 *
 */
 
@@ -16,6 +16,7 @@ extern "C" {
 #define CHAI_EXTRA
 #define CHAI_BACKCOMPAT
 #define CHAI_BETA
+
 
 
 #ifdef WIN32
@@ -186,16 +187,15 @@ extern "C" {
 	};
 
 #define CI_WRITE_TIMEOUT_DEF 20
-/* MAX is not used, backcompat */
+	/* MAX is not used, backcompat */
 #define CI_WRITE_TIMEOUT_MAX 500
-
-/* states of CAN controller */
+	/* states of CAN controller */
 #define CAN_INIT      0
 #define CAN_RUNNING   1
-/*
-*  predefined baud rates (recommended by CiA)
-*  Phillips SJA1000 (16 MHz)
-*/
+	/*
+	*  predefined baud rates (recommended by CiA)
+	*  Phillips SJA1000 (16 MHz)
+	*/
 #define BCI_1M_bt0    0x00
 #define BCI_1M_bt1    0x14
 #define BCI_800K_bt0  0x00
@@ -223,10 +223,9 @@ extern "C" {
 #define BCI_50K   BCI_50K_bt0, BCI_50K_bt1
 #define BCI_20K   BCI_20K_bt0, BCI_20K_bt1
 #define BCI_10K   BCI_10K_bt0, BCI_10K_bt1
-
-/*
-*  Error codes
-*/
+	/*
+	*  Error codes
+	*/
 #define ECIOK      0            /* success */
 #define ECIGEN     1            /* generic (not specified) error */
 #define ECIBUSY    2            /* device or resourse busy */
@@ -241,22 +240,32 @@ extern "C" {
 #define ECIINTR    11           /* call was interrupted by event */
 #define ECINORES   12           /* no resources */
 #define ECITOUT    13           /* time out occured */
-
-/*
-*  Flags for CiOpen
-*/
+	/*
+	*  CAN Events
+	*/
+#define CIEV_RC      1
+#define CIEV_TR      2
+#define CIEV_CANERR  6
+#define CIEV_EWL     3
+#define CIEV_BOFF    4
+#define CIEV_HOVR    5
+#define CIEV_WTOUT   7
+#define CIEV_SOVR    8
+	/* 
+	*  Flags for CiOpen
+	*/
 #define CIO_BLOCK   0x1         // ignored (block mode was removed in CHAI 2.x
 #define CIO_CAN11   0x2
 #define CIO_CAN29   0x4
-/*
-*  Flags for CiWaitEvent
-*/
+	/* 
+	*  Flags for CiWaitEvent
+	*/
 #define CI_WAIT_RC   0x1
 #define CI_WAIT_TR   0x2
 #define CI_WAIT_ER   0x4
-/*
-*  Commands for CiSetLom
-*/
+	/* 
+	*  Commands for CiSetLom
+	*/
 #define CI_LOM_OFF   0x0
 #define CI_LOM_ON    0x1
 
@@ -270,50 +279,45 @@ extern "C" {
 		CI_ON = 1
 	};
 
-/*
-*  Transmit status
-*/
+	/*
+	*  Transmit status
+	*/
 #define CI_TR_COMPLETE_OK    0x0
 #define CI_TR_COMPLETE_ABORT 0x1
 #define CI_TR_INCOMPLETE     0x2
 #define CI_TR_DELAY          0x3
-
-/*
-*  Transmit cancel status
-*/
+	/*
+	*  Transmit cancel status
+	*/
 #define CI_TRCANCEL_TRANSMITTED      0x0
 #define CI_TRCANCEL_ABORTED          0x1
 #define CI_TRCANCEL_NOTRANSMISSION   0x2
 #define CI_TRCANCEL_DELAYABORTED     0x3
-
-/*
-* Bits in canmsg_t.flags field
-*/
+	/*
+	* Bits in canmsg_t.flags field
+	*/
 #define MSG_RTR  0
 #define MSG_FF   2              /* if set - extended frame format is used */
 #define FRAME_RTR     0x1
 #define FRAME_EFF     0x4
 #define FRAME_TRDELAY 0x10
-
-/*
-*  CAN-controller types 
-*/
+	/*
+	*  CAN-controller types 
+	*/
 #define CHIP_UNKNOWN      0
 #define SJA1000           1
 #define EMU               2
 #define MSCAN             3
-
-/*
-*  Manufacturers 
-*/
+	/*
+	*  Manufacturers 
+	*/
 #define MANUF_UNKNOWN      0
 #define MARATHON           1
 #define SA                 2
 #define FREESCALE          3
-
-/*
-*  CAN adapter types 
-*/
+	/*
+	*  CAN adapter types 
+	*/
 #define BRD_UNKNOWN       0
 #define CAN_BUS_ISA       1
 #define CAN_BUS_MICROPC   2
@@ -342,7 +346,6 @@ extern "C" {
 #define DECLHEAD extern
 #endif
 #endif
-
 	DECLHEAD _s16 CiInit(void);
 	DECLHEAD _s16 CiOpen(_u8 chan, _u8 flags);
 	DECLHEAD _s16 CiClose(_u8 chan);
@@ -350,8 +353,7 @@ extern "C" {
 	DECLHEAD _s16 CiStop(_u8 chan);
 	DECLHEAD _s16 CiSetFilter(_u8 chan, _u32 acode, _u32 amask);
 	DECLHEAD _s16 CiSetBaud(_u8 chan, _u8 bt0, _u8 bt1);
-	DECLHEAD _s16 CiTransmit(_u8 chan, canmsg_t * mbuf);
-	DECLHEAD _s16 CiTrCancel(_u8 chan, _u16 * trqcnt);
+	DECLHEAD _s16 CiWrite(_u8 chan, canmsg_t * mbuf, _s16 cnt);
 	DECLHEAD _s16 CiTrStat(_u8 chan, _u16 * trqcnt);
 	DECLHEAD _s16 CiRead(_u8 chan, canmsg_t * mbuf, _s16 cnt);
 	DECLHEAD _s16 CiErrsGetClear(_u8 chan, canerrs_t * errs);
@@ -367,6 +369,8 @@ extern "C" {
 #endif
 
 #ifdef CHAI_EXTRA
+	DECLHEAD _s16 CiTransmit(_u8 chan, canmsg_t * mbuf);
+	DECLHEAD _s16 CiTrCancel(_u8 chan, _u16 * trqcnt);
 	DECLHEAD _s16 CiTrQueThreshold(_u8 chan, _s16 getset, _u16 * thres);
 	DECLHEAD _s16 CiRcQueThreshold(_u8 chan, _s16 getset, _u16 * thres);
 	DECLHEAD _s16 CiRcQueResize(_u8 chan, _u16 size);
@@ -375,14 +379,19 @@ extern "C" {
 	DECLHEAD _s16 CiBoardGetSerial(_u8 brdnum, char *sbuf, _u16 bufsize);
 	DECLHEAD _s16 CiHwReset(_u8 chan);
 	DECLHEAD _s16 CiSetLom(_u8 chan, _u8 mode);
+	DECLHEAD _s16 CiWriteTout(_u8 chan, _s16 getset, _u16 * msec);
 	DECLHEAD void CiStrError(_s16 cierrno, char *buf, _s16 n);
 	DECLHEAD void CiPerror(_s16 cierrno, const char *s);
 #endif
 
-#ifdef CHAI_BACKCOMPAT // backward compatibility: could be removed in future version
-	// use CiTransmit in new code
-	DECLHEAD _s16 CiWrite(_u8 chan, canmsg_t * mbuf, _s16 cnt);
-	DECLHEAD _s16 CiWriteTout(_u8 chan, _s16 getset, _u16 * msec);
+#ifdef CHAI_BACKCOMPAT
+	// don't use in new code 
+	DECLHEAD _s16 CiSetCB(_u8 chan, _u8 ev, void (*ci_handler) (_s16));
+	DECLHEAD _s16 CiSetCBex(_u8 chan, _u8 ev,
+		void (*ci_cb_ex) (_u8, _s16, void *),
+		void *udata);
+	DECLHEAD _s16 CiCB_lock(void);
+	DECLHEAD _s16 CiCB_unlock(void);
 	// use CiSetLom in new code 
 	DECLHEAD _s16 CiSJA1000SetLom(_u8 chan);
 	DECLHEAD _s16 CiSJA1000ClearLom(_u8 chan);
