@@ -10,15 +10,7 @@ control_laser::control_laser(QMainWindow *parent)
 
     isAuthorized = false;
 
-    unsigned long chver = CiGetLibVer();
-    printf("using CHAI %d.%d.%d\n\n", VERMAJ(chver), VERMIN(chver),
-           VERSUB(chver));
-
-    if (CiInit() < 0){ // инициализируем библиотеку CHAI для can адаптера
-        printf("Can`t INIT CHAI");
-        exit(1);
-    }
-
+//    chai_init();
     can_arrays_init(); // инициализируем массивы нулями
     timers_init();     // запускаем таймер
 
@@ -43,6 +35,20 @@ control_laser::control_laser(QMainWindow *parent)
 control_laser::~control_laser()
 {
     delete ui;
+}
+
+void control_laser::chai_init(){
+    unsigned long chver = CiGetLibVer();
+    printf("using CHAI %d.%d.%d\n\n", VERMAJ(chver), VERMIN(chver),
+           VERSUB(chver));
+
+    if (CiInit() < 0){ // инициализируем библиотеку CHAI для can адаптера
+        printf("Can`t INIT CHAI OR ADAPTER NOT CONNECTED");
+        QMessageBox messageBox;
+        QMessageBox::critical(0,"Error","Adapter not connected !");
+        messageBox.setFixedSize(500,200);
+        exit(1);
+    }
 }
 
 void control_laser::onTabChanged(int tabIndex) {
@@ -71,7 +77,13 @@ void control_laser::can_arrays_init()
 
 void control_laser::timers_init()
 {
-    timer_rx_data = new QTimer();
-    timer_rx_data->start(1000);
+    timer_thread = new QThread(this);
+    timer_rx_data = new QTimer(nullptr);
+    timer_rx_data->setInterval(100);
+    timer_rx_data->moveToThread(timer_thread);
+    timer_rx_data->connect(timer_thread, SIGNAL(started()), SLOT(start()));
+    timer_thread->start();
+
+//    timer_rx_data->start(1000);
     // TODO ?Отключение таймера когда адаптер не подключен?
 }

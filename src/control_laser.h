@@ -3,6 +3,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtCore/QTimer>
+#include <QMessageBox>
+#include <QThread>
 //#include "../lib/chai.h"
 extern "C" {
     #include "../lib/chai/src/chai.h"
@@ -46,6 +48,7 @@ private:
     Ui::control_laser *ui;
 
     QTimer *timer_rx_data;
+    QThread* timer_thread;
 
     bool isAuthorized;
     bool str_error;
@@ -86,6 +89,7 @@ private:
     } TE_canbytes;
 
     // UI functions
+    void chai_init();
     void timers_init();
     void can_arrays_init();
 
