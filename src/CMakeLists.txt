@@ -9,6 +9,16 @@ set (chai
         ../lib/chai/src/unican.h
         )
 
+set(chai2
+        ../lib/chai2/src/chai-lnx.c
+#        ../lib/chai2/src/bmarathon.c
+#        ../lib/chai2/src/boards.c
+#        ../lib/chai2/src/boards-conf.c
+#        ../lib/chai2/src/statstr.c
+#        ../lib/chai2/src/unicandrv-lnx.c
+#        ../lib/chai2/src/unicandrv.c
+        )
+
 set(SOURCES
         main.cpp
         control_laser.cpp

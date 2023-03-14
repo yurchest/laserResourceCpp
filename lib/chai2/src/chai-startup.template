@@ -1,0 +1,100 @@
+
+
+check_requirements () {
+    if [ ! -c /dev/can0 ]; then
+      echo "can device file dose not exist"
+      echo "it seems you don't start chai before"
+      return 1
+    fi
+    if [ ! -f $CHAIBASE/lib/unican.o ] && [ ! -f $CHAIBASE/lib/unican.ko ]; then
+	echo "it seems You have not chai-$CHAIVER configured "
+	echo "please run \"$CHAIBASE/make rebuild\" after boot "
+	return 1
+    fi
+    return 0
+}
+
+start () {
+        echo -n $"Starting chai-$CHAIVER: "
+        if [ ! -d $CHAIBASE ]; then
+          echo "it seems You have not chai-$CHAIVER installed "
+	  echo "FAILED"
+	  exit 1
+        fi
+	/bin/sh $CHAIBASE/makedevs
+	RETVAL=$?
+	if [ $RETVAL != 0 ]; then 
+	    echo "FAILED"
+	    exit $RETVAL
+	fi
+	check_requirements
+	RETVAL=$?
+	if [ $RETVAL != 0 ]; then 
+	    echo "FAILED"
+	    exit $RETVAL
+	fi
+	if [ -f $CHAIBASE/lib/unican.o ]; then
+	  /sbin/insmod $CHAIBASE/lib/unican.o $CBISA_PARAM >/dev/null
+	  RETVAL=$?
+	else
+	  /sbin/insmod $CHAIBASE/lib/unican.ko $CBISA_PARAM >/dev/null
+	  RETVAL=$?
+	fi
+	if [ $RETVAL != 0 ]; then 
+	    echo "FAILED"
+	    exit $RETVAL
+	fi
+	echo "OK"
+}
+
+stop () {
+        echo -n $"Stopping chai-$CHAIVER: "
+        if [ ! -d $CHAIBASE ]; then
+	  echo -n "it seems You have not chai-$CHAIVER installed "
+	  echo "FAILED"
+	  exit 1
+        fi
+	check_requirements
+	RETVAL=$?
+	if [ $RETVAL != 0 ]; then 
+	    echo "FAILED"
+	    exit $RETVAL
+	fi
+	/sbin/rmmod unican
+	RETVAL=$?
+	if [ $RETVAL != 0 ]; then 
+	    echo "FAILED"
+	    exit $RETVAL
+	fi
+	echo "OK"
+}
+
+# See how we were called.
+case "$1" in
+    start)
+	start
+        ;;
+    stop)
+	stop
+        ;;
+    status)
+        /sbin/lsmod | grep unican > /dev/null
+        RETVAL=$?
+	if [ $RETVAL = 0 ]; then 
+	    echo "unican kernel driver for chai-$CHAIVER is running"
+	    cat /proc/can/unican
+	else
+	    echo "unican kernel driver for chai-$CHAIVER is stopped"
+	fi
+        ;;
+    restart)
+        stop
+	start
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart|status}"
+        RETVAL=1
+esac
+
+exit $RETVAL
+

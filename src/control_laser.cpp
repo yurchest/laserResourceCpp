@@ -14,7 +14,7 @@ control_laser::control_laser(QMainWindow *parent)
     can_arrays_init(); // инициализируем массивы нулями
     timers_init();     // запускаем таймер
 
-    connect(timer_rx_data, SIGNAL(timeout()), this, SLOT(receive_msg()));
+    connect(timer_rx_data, SIGNAL(timeout()), this, SLOT(receive_msg()), Qt::DirectConnection);
     connect(ui->pushButton_6, SIGNAL(clicked(bool)), this, SLOT(connect_disconnect_adapter()));
     connect(ui->pushButton_4, SIGNAL(clicked(bool)), this, SLOT(apply_settings()));
     connect(ui->pushButton, &QPushButton::clicked, this, [this]{ send_command(LASER_ON_OFF);});
@@ -40,7 +40,7 @@ control_laser::~control_laser()
 
 void control_laser::chai_init(){
     unsigned long chver = CiGetLibVer();
-    printf("using CHAI %d.%d.%d\n\n", VERMAJ(chver), VERMIN(chver),
+    printf("using CHAI %d.%d.%d\n", VERMAJ(chver), VERMIN(chver),
            VERSUB(chver));
 
     if (CiInit() < 0){ // инициализируем библиотеку CHAI для can адаптера
@@ -78,13 +78,13 @@ void control_laser::can_arrays_init()
 
 void control_laser::timers_init()
 {
-    timer_thread = new QThread(this);
-    timer_rx_data = new QTimer(nullptr);
-    timer_rx_data->setInterval(100);
-    timer_rx_data->moveToThread(timer_thread);
-    timer_rx_data->connect(timer_thread, SIGNAL(started()), SLOT(start()));
-    timer_thread->start();
 
 //    timer_rx_data->start(1000);
+    timer_thread = new QThread(this);
+    timer_rx_data = new QTimer(nullptr);
+    timer_rx_data->setInterval(10);
+    timer_rx_data->moveToThread(timer_thread);
+    connect(timer_thread, SIGNAL(started()), timer_rx_data,SLOT(start()));
+    timer_thread->start();
     // TODO ?Отключение таймера когда адаптер не подключен?
 }
