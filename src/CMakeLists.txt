@@ -45,6 +45,7 @@ IF (WIN32)
     target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/win/chai.dll)
 ELSE ()
     target_link_libraries(Laser PRIVATE ${LIBS} ${CMAKE_SOURCE_DIR}/lib/unix/ftd2xx.a)
+#    target_link_libraries(Laser PRIVATE ${LIBS} ftd2xx)
 ENDIF ()
 
 

@@ -10,7 +10,7 @@ control_laser::control_laser(QMainWindow *parent)
 
     isAuthorized = false;
 
-//    chai_init();
+    chai_init();
     can_arrays_init(); // инициализируем массивы нулями
     timers_init();     // запускаем таймер
 
@@ -34,6 +34,7 @@ control_laser::control_laser(QMainWindow *parent)
 
 control_laser::~control_laser()
 {
+    timer_thread->exit();
     delete ui;
 }
 
@@ -43,9 +44,9 @@ void control_laser::chai_init(){
            VERSUB(chver));
 
     if (CiInit() < 0){ // инициализируем библиотеку CHAI для can адаптера
-        printf("Can`t INIT CHAI OR ADAPTER NOT CONNECTED");
+        printf("Can`t INIT CHAI");
         QMessageBox messageBox;
-        QMessageBox::critical(0,"Error","Adapter not connected !");
+        QMessageBox::critical(0,"Error","Can`t INIT CHAI !");
         messageBox.setFixedSize(500,200);
         exit(1);
     }
