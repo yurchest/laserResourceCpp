@@ -29,7 +29,7 @@ set(SOURCES
         settings_tab.cpp
         authentication.cpp
         ${bcrypt}
-        ${chai}
+#        ${chai}
         )
 
 # Set path to our custom CMAKE scripts
@@ -58,13 +58,12 @@ ELSE ()
 #    target_link_libraries(Laser PRIVATE ${LIBS} ftd2xx)
 ENDIF ()
 
-
 # Сборка в папку LaserProgram
 IF (WIN32)
     set_target_properties(Laser PROPERTIES
-            MACOSX_BUNDLE TRUE
             WIN32_EXECUTABLE TRUE
             )
+
     file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/LaserProgram/)
     add_custom_command(TARGET Laser
             POST_BUILD
