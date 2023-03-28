@@ -6,3 +6,4 @@
 /build_clion/*
 /.cache/*
 /test_marathon/build/*
+/build_win/*

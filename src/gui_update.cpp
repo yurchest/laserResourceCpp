@@ -1,6 +1,5 @@
 #include "control_laser.h"
 #include "ui_control_laser.h"
-#include <iostream>
 
 void control_laser::gui_update(canmsg_t rx_frame) {
 

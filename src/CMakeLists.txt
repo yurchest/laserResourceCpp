@@ -60,9 +60,9 @@ ENDIF ()
 
 # Сборка в папку LaserProgram
 IF (WIN32)
-    set_target_properties(Laser PROPERTIES
-            WIN32_EXECUTABLE TRUE
-            )
+#    set_target_properties(Laser PROPERTIES
+#            WIN32_EXECUTABLE TRUE
+#            )
 
     file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/LaserProgram/)
     add_custom_command(TARGET Laser

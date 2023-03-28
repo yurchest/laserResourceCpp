@@ -1,6 +1,8 @@
 #ifndef CONTROL_LASER_H
 #define CONTROL_LASER_H
 
+#include <iostream>
+
 #include <QtWidgets/QMainWindow>
 #include <QtCore/QTimer>
 #include <QMessageBox>
