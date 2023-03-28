@@ -76,6 +76,7 @@ _s16 control_laser::board_info() {
 
 // Функция подключения/отключения CAN - адаптера
 void control_laser::connect_disconnect_adapter() {
+    ui->pushButton_6->setEnabled(false);
     _u16 trqcnt = 0;    // Вспомогательная переменная для хранения кол-ва стёртых посылок
     _u16 *ptr_trqcnt = &trqcnt;
 
@@ -111,6 +112,7 @@ void control_laser::connect_disconnect_adapter() {
             can_state = OFF;
         }
     }
+    ui->pushButton_6->setEnabled(true);
 }
 
 void control_laser::send_settings_data(const _u8 *tx_data_freq_t, const _u8 *tx_data_energy) {

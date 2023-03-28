@@ -15,7 +15,7 @@ control_laser::control_laser(QMainWindow *parent)
     timers_init();     // запускаем таймер
 
     connect(timer_rx_data, SIGNAL(timeout()), this, SLOT(receive_msg()), Qt::DirectConnection);
-    connect(ui->pushButton_6, SIGNAL(clicked(bool)), this, SLOT(connect_disconnect_adapter()));
+    connect(ui->pushButton_6, SIGNAL(clicked(bool)), this, SLOT(run_thread_con_disc_adapter()));
     connect(ui->pushButton_4, SIGNAL(clicked(bool)), this, SLOT(apply_settings()));
     connect(ui->pushButton, &QPushButton::clicked, this, [this]{ send_command(LASER_ON_OFF);});
     connect(ui->pushButton_3, &QPushButton::clicked, this, [this]{ send_command(LASER_SYNC);});
@@ -75,6 +75,12 @@ void control_laser::can_arrays_init()
     tx_laser_drying_off[0] = LASER_DRYING_OFF;
 
 }
+
+void control_laser::run_thread_con_disc_adapter(){
+    std::thread([this](){connect_disconnect_adapter();}).detach();
+
+}
+
 
 void control_laser::timers_init()
 {

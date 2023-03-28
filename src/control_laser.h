@@ -2,6 +2,7 @@
 #define CONTROL_LASER_H
 
 #include <iostream>
+//#include <future>
 
 #include <QtWidgets/QMainWindow>
 #include <QtCore/QTimer>
@@ -123,6 +124,7 @@ private slots:
     void connect_disconnect_adapter();
     void receive_msg();
     void apply_settings();
+    void run_thread_con_disc_adapter();
 };
 
 #endif // CONTROL_LASER_H
